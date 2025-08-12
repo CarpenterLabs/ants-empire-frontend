@@ -1,0 +1,34 @@
+.antListView {
+  :global {
+
+    .antListView-content {
+      display: grid;
+
+      .filter-order {
+        display: flex;
+        justify-content: center;
+        margin-bottom:18px;
+      }
+
+      h5 {
+        margin: 0;
+      }
+
+      .list-ants {
+        width: 100%;
+        margin: 28px 0;
+        
+        display: grid;
+        grid-template-columns: repeat(auto-fit, 238px);
+        gap: 30px;
+        // justify-content: space-between;
+        justify-content: center;
+
+        @media (max-width: 559px) {
+          display: grid;
+          justify-content: space-around;
+        }
+      }
+    }
+  }
+}

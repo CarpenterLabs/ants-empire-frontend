@@ -1,0 +1,79 @@
+/* ──────── ELEMENTOS DE SPOTS ─────────────────────── */
+:global {
+  .spots-item {
+    position: absolute;
+    cursor: pointer;
+    transform: translateZ(0);
+    // transition: all 0.3s ease;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+
+    &:hover {
+      filter: drop-shadow(0 0 4px rgba(255, 255, 255, 1)) drop-shadow(0 0 8px rgba(255, 255, 255, 0.6));
+      // transform: scale(1.05);
+      transition: all 0.2s ease-in-out;
+    }
+
+    &:has(.coolDownContent):hover {
+      filter: none;
+      transform: none;
+      cursor: default;
+    }
+
+    &.not-allowed {
+      // display:none;
+      cursor: not-allowed;
+      &:hover {
+        filter: none;
+      }
+      img {
+        filter: grayscale(1);
+      }
+    }
+
+    .spot-base {
+      display: none;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      pointer-events: none;
+      image-rendering: crisp-edges;
+      display: block;
+      transform: translateZ(0);
+    }
+
+    .material,
+    .chest {
+      width: 100%;
+      max-width: 47px;
+      object-fit: contain;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      pointer-events: none;
+      image-rendering: crisp-edges;
+      display: block;
+      transform: translateZ(0);
+      z-index: 2; /* sits above material/chest—won't show on chest slots since React won't render it there */
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      pointer-events: none;
+      image-rendering: crisp-edges;
+      display: block;
+      transform: translateZ(0);
+    }
+  }
+}

@@ -1,0 +1,59 @@
+.simulations {
+    :global {
+        display: inline-flex;
+        align-items: flex-end;
+        border-bottom: 1px solid grey;
+        padding-bottom: 25px;
+        padding: 25px 0;
+        justify-content: space-around;
+        
+        .box-img {
+            align-items: flex-end;
+            justify-content: flex-end;
+            padding-right: 0;
+            display: flex;
+
+            img {
+                margin-left: 20px;
+                max-height: 30px;
+                float: right;
+                cursor: pointer;
+                transition: all 0.4s;
+
+                &:hover {
+                    transform: translateY(-4px);
+                }
+
+                &.closebtn {
+                    background-color: #f4877d;
+                }
+
+                &.addbtn {
+                    background-color: #bcf6db;
+                }
+            }           
+        }
+
+        .mints{           
+            padding-left: 0;            
+        }
+
+        .fadeIn {
+            animation: fadeIn 0.2s;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        input {
+            width: 100%;
+        }
+    }
+}

@@ -1,0 +1,250 @@
+.antMiniCard {
+  transition: all 0.25s ease-in-out;
+  cursor: pointer;
+  margin: 0;
+  transition: all 0.4s;
+  max-width: 9rem;
+
+  &:hover {
+    box-shadow: 0 10px 10px -10px rgb(0 0 0 / 50%);
+    // -webkit-transform: scale(1.05);
+    // transform: scale(1.05);
+    transform: translateY(-4px);
+  }
+
+  :global {
+    .card {
+      max-width: 100%;
+      -webkit-box-shadow: 11px 11px 5px -8px rgba(0, 0, 0, 0.75);
+      -moz-box-shadow: 11px 11px 5px -8px rgba(0, 0, 0, 0.75);
+      box-shadow: 11px 11px 5px -8px rgba(0, 0, 0, 0.75);
+
+      .usedtimes {
+        display: inline-flex;
+        padding: 0px 5px 0px 5px;
+        font-size: 14px;
+        margin: 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1882352941);
+        justify-content: space-between;
+      }
+
+      &.unavailable {
+        filter: grayscale(100%);
+        background-color: #d8d0d0 !important;
+      }
+
+      &.selected {
+        animation: shake 150ms 2 linear;
+      }
+
+      &.rarity {
+        &-common {
+          background-color: #00ff0824;
+        }
+
+        &-rare {
+          background-color: #0072ff24;
+        }
+
+        &-epic {
+          background-color: #bd4bf74a;
+        }
+
+        &-legendary {
+          background-color: #ffd700cc;
+        }
+      }
+
+      .card-img {
+        max-width: 100px;
+        margin: 0 auto;
+
+        &.specie {
+          &.blue {
+            filter: hue-rotate(182deg);
+          }
+
+          &.red {
+            filter: hue-rotate(329deg);
+          }
+
+          // &.white{
+          //   // filter:  brightness(0) invert(1);
+          // }
+          &.green {
+            filter: hue-rotate(44deg);
+          }
+
+          &.yellow {
+            filter: hue-rotate(248deg);
+          }
+        }
+      }
+
+      .card-title {
+        text-transform: uppercase;
+        text-align: center;
+        font-size: 1.5em;
+      }
+
+      .tokenId{
+        font-size: 12px;
+        color: rgb(61, 59, 59);
+        font-weight: 100;
+        margin-left: 5px;
+      }
+
+      .marketBadge{
+        margin-left: 5px;
+      }
+
+      .box-type {
+        display: inline-flex;
+        background-color: #f7f7f7;
+        width: 100%;
+        justify-content: space-evenly;
+        border-bottom-right-radius: 5px;
+        border-bottom-left-radius: 5px;
+
+        &.without-border {
+          border-bottom-right-radius: 0;
+          border-bottom-left-radius: 0;
+        }
+
+        .power {
+          width: 45px;
+          margin: 5px;
+
+          span {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            font-size: 1.5em;
+
+            padding: 0px;
+            border-radius: 20px;
+
+            &.rarity {
+              &-common {
+                background-color: #00ff0824;
+              }
+
+              &-rare {
+                background-color: #0072ff24;
+              }
+
+              &-epic {
+                background-color: #bd4bf74a;
+              }
+
+              &-legendary {
+                background-color: #ffd700cc;
+              }
+            }
+          }
+        }
+
+        .upgraded {
+          margin-top: 10px;
+        }
+
+        img {
+          width: 36px;
+          padding: 0px;
+          border-radius: 20px;
+          margin: 5px;
+
+          &.type {
+            &.worker {
+              background-color: #ffa41d82;
+            }
+
+            &.soldier {
+              background-color: #ff471d82;
+            }
+
+            &.flying {
+              background-color: #feabff82;
+            }
+          }
+
+          &.specie {
+            &.blue {
+              background-color: #49acfb80;
+            }
+
+            &.red {
+              background-color: #f5785ab8;
+            }
+
+            &.white {
+              background-color: #f8922c9e;
+            }
+
+            &.green {
+              background-color: #85b92773;
+            }
+
+            &.yellow {
+              background-color: #eb79fc5e;
+            }
+          }
+        }
+      }
+
+      .box-usedtimes {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        align-content: center;
+        background-color: #f7f7f7;
+
+        .icon {
+          font-size: 26px;
+          letter-spacing: -2px;
+          font-weight: 300;
+          margin: 0;
+          padding: 0 5px;
+          background-color: #f8f8f8;
+        }
+
+        .current-usedtimes {
+          padding-left: 5px;
+          border-top: 1px solid #b3b1b1;
+          border-left: 1px solid #b3b1b1;
+          border-right: 0;
+          border-bottom: 0;
+          width: 100%;
+          background-color: white;
+          margin: 0;
+          font-size: 26px;
+          letter-spacing: -2px;
+          font-weight: 300;
+        }
+
+        .input-usedtimes {
+          padding-left: 5px;
+          border-top: 1px solid #b3b1b1;
+          border-left: 1px solid #b3b1b1;
+          border-right: 0;
+          border-bottom: 0;
+          width: 100%;
+          background-color: white;
+          margin: 0;
+          font-size: 26px;
+          letter-spacing: -2px;
+          font-weight: 300;
+        }
+      }
+
+      .button-box {
+        width: 100%;
+        display: inline-flex;
+        justify-content: space-evenly;
+      }
+    }
+  }
+}

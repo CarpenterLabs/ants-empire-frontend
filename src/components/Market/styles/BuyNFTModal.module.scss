@@ -1,0 +1,225 @@
+.buyNFTModal {
+  :global {
+    .mainbody {
+      display: inline-flex;
+      justify-content: center;
+      gap: 11px;
+      padding-bottom: 1rem;
+      flex-direction: column;
+      width: 100%;
+
+      .list-ants {
+        margin: 0px auto;
+        width: 100%;
+        display: inline-flex;
+        justify-content: center;
+      }
+
+      .feeText {
+        text-align: center;
+        color: $primary-orange;
+        font-weight: 400;
+        margin-top: 10px;
+      }
+
+      .priceArea {
+        margin: auto;
+      }
+    }
+    .button-box {
+      margin: 10px 0;
+      width: 100%;
+      display: inline-flex;
+      justify-content: space-evenly;
+
+      .purchaseBtn {
+        cursor: pointer;
+        letter-spacing: 1.5px;
+        background-image: url('/images/finals/roomDetail/lvl_up_btn_bg.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 100% 100%;
+        // width: 150px;
+        height: 50px;
+        font-family: 'Slackey';
+        font-weight: bolder;
+        text-transform: uppercase;
+        background-color: transparent;
+        border: none;
+        @include button-hover-without-text;
+
+        img {
+          width: 30px;
+          filter: drop-shadow(1px 1px 3px rgba(68, 61, 61, 0.9));
+          // margin-left: -5px;
+        }
+      }
+
+      .ownerBtns {
+        display: inline-flex;
+        gap: 10px;
+      }
+
+      .ownerBtns {
+        &.editMode {
+          .cancelButton {
+            display: none;
+          }
+        }
+      }
+
+      .editButton {
+        cursor: pointer;
+        letter-spacing: 1.5px;
+        background-image: url('/images/finals/roomDetail/roll_bg.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 100% 100%;
+        // width: 150px;
+        height: 50px;
+        font-family: 'Slackey';
+        font-weight: bolder;
+        text-transform: uppercase;
+        background-color: transparent;
+        border: none;
+        @include button-hover-without-text;
+
+        img {
+          width: 30px;
+          padding-right: 5px;
+          filter: drop-shadow(1px 1px 3px rgba(68, 61, 61, 0.9));
+        }
+
+        &.saveBtn{
+          padding: 5px 4rem;
+        }
+      }
+
+      .cancelButton {
+        cursor: pointer;
+        letter-spacing: 1.5px;
+        background-image: url('/images/finals/tavern/pinkBtn_bg.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 100% 100%;
+        // width: 150px;
+        height: 50px;
+        font-family: 'Slackey';
+        font-weight: bolder;
+        text-transform: uppercase;
+        background-color: transparent;
+        border: none;
+        @include button-hover-without-text;
+        padding: 0px 20px;
+
+        img {
+          width: 30px;
+          filter: drop-shadow(1px 1px 3px rgba(68, 61, 61, 0.9));
+        }
+      }
+
+      .editMode {
+        // border: 1px solid #ed9e6569;
+        display: inline-flex;
+        align-items: center;
+        transition: all 0.4s;
+        border-radius: 3px;
+        .newPriceZone {
+          background-image: url('/images/finals/roomDetail/totalant_bg.png');
+
+          display: flex;
+          justify-content: space-between;
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: 100% 100%;
+          align-items: center;
+          width: 215px;
+          padding: 5px 10px;
+
+          .cancelButtonNewPrice {
+            // width: 30px;
+            // height: 30px;
+            // padding: 0;
+            // margin-left: 5px;
+            background-color: transparent;
+            border: none;
+            padding: 3px;
+
+            img {
+              width: 30px;
+              filter: drop-shadow(1px 1px 3px rgba(68, 61, 61, 0.9));
+            }
+          }
+
+          .newPriceTitle {
+            font-size: 14px;
+            // margin-right: 10px;
+            color: white;
+            font-weight: bolder;
+            // margin-top: auto;
+            // margin-bottom: 3px;
+            margin-top: 10px;
+          }
+
+          .newPriceInpt {
+            width: 35%;
+            background-color: transparent;
+            border: none;
+            border-bottom: 1px solid $primary-orange;
+            color: $primary-orange;
+            font-weight: bolder;
+
+            &:focus-visible {
+              background-color: transparent;
+              border: none;
+              border-bottom: 2px solid $primary-orange;
+              outline: none;
+            }
+          }
+        }
+      }
+    }
+
+    @media (max-width: 768px) {
+      .button-box {
+        .ownerBtns {
+          flex-direction: row;
+        }
+        .editMode {
+          flex-direction: column;
+        }
+
+        .ownerBtns {
+          &.editMode {
+            .cancelButton {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+
+    .notLoged {
+      width: 100%;
+      font-weight: bolder;
+      text-align: center;
+      color: $primary-orange;
+      padding: 0px;
+      margin: -5px 0px;
+    }
+  }
+}
+
+.mainBuyModal {
+  :global {
+    .modal-content {
+      border: 2px solid white;
+      border-bottom-left-radius: 5px;
+      border-bottom-right-radius: 5px;
+      .modal-body {
+        background: $main-modal-bg-color;
+        padding: 5px 5px;
+      }
+    }
+  }
+}

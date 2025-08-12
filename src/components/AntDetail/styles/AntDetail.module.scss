@@ -1,0 +1,280 @@
+.AntDetail {
+  :global {
+    .general-box {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-areas:
+        'pHeader pHeader'
+        'ant-img ant-detail'
+        'mainText mainText';
+      margin-top: 5px;
+   
+      .pHeader {
+        grid-area: pHeader;
+        display: flex;
+        justify-content: center;
+        color: #5a5a5a;
+        font-weight: 300;
+        font-size: 12px;
+        width: fit-content;
+        margin: -19px auto;
+      }
+
+      .ant-img {
+        grid-area: ant-img;
+        border-radius: 5% 0 0 5%;
+
+        img {
+          width: 70%;
+          display: flex;
+          margin: 0 auto;
+        }
+
+        &.common {
+          background-color: #00ff0824;
+        }
+
+        &.rare {
+          background-color: #0072ff24;
+        }
+
+        &.epic {
+          background-color: #bd4bf74a;
+        }
+
+        &.legendary {
+          background-color: #ffd70052;
+        }
+
+        .specie {
+          // &.blue {}
+          &.white {
+            filter: hue-rotate(162deg);
+          }
+
+          &.red {
+            filter: hue-rotate(128deg);
+          }
+
+          &.green {
+            filter: hue-rotate(274deg);
+          }
+
+          &.yellow {
+            filter: hue-rotate(84deg);
+          }
+        }
+      }
+
+      .ant-detail {
+        grid-area: ant-detail;
+        border-radius: 0 5% 5% 0;
+
+        .box-type {
+          // background: rgba(255, 255, 255, 0.21);
+          width: 100%;
+          justify-content: space-evenly;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          justify-items: center;
+          align-items: center;
+          height: 100%;
+
+          .power {
+            width: 53px;
+            height: 53px;
+            margin: 5px;
+
+            @media (max-width: 500px) {
+              width: 38px;
+              height: 38px;
+            }
+
+            span {
+              width: 100%;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              height: 100%;
+              padding: 0px;
+              font-weight: 300;
+              border-radius: 50px;
+              font-size: 2rem;
+
+              @media (max-width: 500px) {
+                font-size: 1.5rem;
+              }
+
+              &.rarity {
+                &-common {
+                  background-color: #cfe2af;
+                  border: 1px solid #9ec857;
+                }
+
+                &-rare {
+                  border: 1px solid #3d8ec8;
+                  background-color: #6597bdba;
+                }
+
+                &-epic {
+                  background-color: #a27cc5b0;
+                  border: 1px solid #746187;
+                }
+
+                &-legendary {
+                  background-color: #fae05cbf;
+                  border: 1px solid #b6a955;
+                }
+              }
+            }
+          }
+
+          img {
+            margin: 5px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+
+            @media (max-width: 500px) {
+              width: 35px;
+              height: 35px;
+            }
+
+            &.type {
+              &.worker {
+                background-color: #ffa41d82;
+                outline: 1px solid #d19130;
+              }
+
+              &.soldier {
+                background-color: #ff471d82;
+                outline: 1px solid #eb5736;
+              }
+
+              &.flying {
+                background-color: #feabff82;
+                outline: 1px solid #de81e0;
+              }
+            }
+
+            &.specie {
+              &.blue {
+                background-color: #a4d5fb;
+                border: 1px solid #48a1e7;
+              }
+
+              &.red {
+                background-color: #f7836861;
+                border: 1px solid #f0b6a8;
+              }
+
+              &.white {
+                background-color: #ffffffe6;
+                border: 1px solid #adadad;
+              }
+
+              &.green {
+                background-color: #a4e52fe6;
+                border: 1px solid #82b32d;
+              }
+
+              &.yellow {
+                background-color: #eff30770;
+                border: 1px solid #bdc106;
+              }
+            }
+          }
+
+          .box-rarity {
+            display: flex;
+            flex-direction: column;
+            font-size: 22px;
+            font-weight: 300;
+            gap: 5px;
+            min-width: 70px;
+            text-align: center;
+
+            .rarity {
+              justify-content: center;
+              display: flex;
+              align-items: center;
+              gap: 5px;
+              font-size: 2rem;
+              font-weight: 300;
+
+              @media (max-width: 500px) {
+                font-size: 1.5rem;
+              }
+
+              .inside {
+                width: 53px;
+                height: 53px;
+                border-radius: 100%;
+                text-align: center;
+                display: inline-flex;
+                justify-content: space-around;
+                align-items: center;
+
+                @media (max-width: 500px) {
+                  width: 38px;
+                  height: 38px;
+                }
+
+                &.common {
+                  background-color: #cfe2af;
+                  border: 1px solid #9ec857;
+                }
+
+                &.rare {
+                  border: 1px solid #3d8ec8;
+                  background-color: #6597bdba;
+                }
+
+                &.epic {
+                  background-color: #a27cc5b0;
+                  border: 1px solid #746187;
+                }
+
+                &.legendary {
+                  background-color: #fae05cbf;
+                  border: 1px solid #b6a955;
+                }
+              }
+            }
+          }
+        }
+
+        &.common {
+          background-color: #00ff0824;
+        }
+
+        &.rare {
+          background-color: #0072ff24;
+        }
+
+        &.epic {
+          background-color: #bd4bf74a;
+        }
+
+        &.legendary {
+          background-color: #ffd70052;
+        }
+      }
+
+      .mainText {
+        grid-area: mainText;
+        margin-top: 10px;
+
+        p {
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          overflow: hidden;
+
+          &:last-of-type {
+            margin: 0;
+          }
+        }
+      }
+    }
+  }
+}

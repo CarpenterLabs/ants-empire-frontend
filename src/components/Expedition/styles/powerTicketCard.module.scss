@@ -1,0 +1,152 @@
+.powerTicketCard {
+  display: inline-flex;
+
+  :global {
+    .ticketCard-content {
+      display: inline-flex;
+      transition: all 0.25s ease-in-out;
+      cursor: pointer;
+      // margin: 15px 0;
+      transition: all 0.4s;
+
+      &:hover {
+        box-shadow: 0 10px 10px -10px rgb(0 0 0 / 50%);
+        transform: translateY(-4px);
+      }
+
+      &.disabled {
+        cursor: not-allowed;
+
+        &:hover {
+          transform: none;
+        }
+      }
+
+      .wrapper {
+        background-image: url('/images/finals/expedition/Reward/reward_paper2_active.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 100% 100%;
+        margin: 2px;
+
+        .card-body {
+          padding: 0px;
+        }
+
+        .infoZone {
+          display: inline-flex;
+          flex-direction: column;
+          align-items: center;
+          width: 100%;
+
+          .title {
+            text-transform: uppercase;
+            width: 100%;
+            text-align: center;
+            font-size: 23px;
+            color: white;
+            padding: 12px 0px;
+            font-weight: bolder;
+          }
+
+          .desc {
+            font-weight: bolder;
+            font-size: 16px;
+          }
+
+          .winCount {
+            font-weight: 500;
+            font-size: small;
+          }
+        }
+      }
+
+      .headerInfo {
+        display: inline-flex;
+        justify-content: space-between;
+        padding: 5px 5px 0px 5px;
+
+        .power {
+          font-size: 24px;
+          font-weight: bolder;
+          padding-left: 5px;
+          margin-bottom: 0;
+          color: white;
+          display: inline-flex;
+          height: 100%;
+          align-items: flex-end;
+          line-height: 1;
+
+          .icon {
+            // font-size: 20px;
+            // margin-left: -5px;
+
+            img {
+              width: 30px;
+            }
+          }
+        }
+
+        .price {
+          color: white;
+          font-weight: bolder;
+          display: flex;
+          align-items: flex-end;
+        }
+      }
+
+      .card {
+        // align-items: center;
+        max-width: 350px;
+        box-shadow: 11px 11px 5px -8px rgb(0 0 0 / 75%);
+        border: 2px solid white;
+        background-color: #282c2f;
+
+        &.unavailable {
+          -webkit-filter: grayscale(100%);
+          filter: grayscale(100%);
+        }
+
+        > img {
+          width: 100%;
+          height: 100%;
+          padding: 1rem;
+        }
+
+        .button-box {
+          display: flex;
+          align-items: flex-end;
+          width: 100%;
+          flex-wrap: wrap;
+          align-content: flex-end;
+          padding: 5px;
+
+          .purchased-times {
+            text-align: center;
+            margin: 0px auto;
+            font-size: 14px;
+            font-weight: 300;
+            letter-spacing: 0px;
+            color: #3a3a3a;
+          }
+
+          .claimBtn {
+            width: 100%;
+            cursor: pointer;
+            letter-spacing: 1.5px;
+            background-image: url('/images/finals/expedition/Reward/claim_btn_bg_active.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 100% 100%;
+            // width: 150px;
+            height: 50px;
+            font-family: 'Slackey';
+            font-weight: bolder;
+            @include button-hover-without-text;
+          }
+
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,54 @@
+.tableAntList {
+    :global {
+
+        .table-container{
+            overflow-y: scroll;
+            overflow-x: hidden;
+            max-height: 500px;
+        }
+
+        th {
+            text-transform: capitalize;
+        }
+
+        tr {
+            &.rarity {
+                &-common {
+                    background-color: #00ff0824;
+                }
+
+                &-rare {
+                    background-color: #0072ff24;
+                }
+
+                &-epic {
+                    background-color: #bd4bf74a;
+                }
+
+                &-legendary {
+                    background-color: #ffd700cc;
+                }
+            }
+        }
+
+        // td{
+        //     &.specie{
+        //         &-blue{
+        //             background-color: #bce2fe
+        //         }
+        //         &-red{
+        //             background-color: #f4887d
+        //         }
+        //         &-white{
+        //             background-color: #fbfbfb
+        //         }
+        //         &-green{
+        //             background-color: #bcf6db
+        //         }
+        //         &-yellow{
+        //             background-color: #f6c43f
+        //         }               
+        //       }
+        // }
+    }
+}

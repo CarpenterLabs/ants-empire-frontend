@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ERC20 & Native Token Pool Balances</title>
+    <!-- Load ethers.js from a CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/5.7.2/ethers.umd.min.js"></script>
+    <!-- Load Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Load Chart.js DataLabels plugin -->
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+    <style>
+      body {
+        /* display: inline-flex; */
+      }
+      #chart,
+      #ethChart {
+        max-width: 600px;
+        max-height: 400px;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h1>ERC20 Pool Balances</h1>
+      <div>
+        <canvas id="chart"></canvas>
+      </div>
+    </div>
+
+    <div>
+      <h1>Gas Wallet Balance</h1>
+      <div>
+        <canvas id="ethChart"></canvas>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', async () => {
+        if (typeof ethers === 'undefined') {
+          console.error('ethers.js is not loaded. Please check the script tag.');
+          return;
+        }
+        const provider = new ethers.providers.JsonRpcProvider('https://ganache.campihome.cloud/');
+        const erc20Abi = ['function balanceOf(address owner) view returns (uint256)'];
+
+        const poolAddresses = [
+          '0x630589690929E9cdEFDeF0734717a9eF3Ec7Fcfe',
+          '0x0E696947A06550DEf604e82C26fd9E493e576337',
+          '0xDb56f2e9369E0D7bD191099125a3f6C370F8ed15',
+        ];
+        const tokenAddress = '0x5b1869D9A4C187F2EAa108f3062412ecf0526b24';
+
+        // Native token pool address
+        const nativePoolAddress = '0x1dF62f291b2E969fB0849d99D9Ce41e2F137006e';
+
+        async function getPoolBalances() {
+          const tokenContract = new ethers.Contract(tokenAddress, erc20Abi, provider);
+
+          const erc20Balances = await Promise.all(
+            poolAddresses.map(async (address) => {
+              const balance = await tokenContract.balanceOf(address);
+              return parseFloat(ethers.utils.formatUnits(balance, 18)); // Assuming 18 decimals
+            })
+          );
+
+          // Get the native token balance (ETH or BNB)
+          const nativeBalance = parseFloat(ethers.utils.formatEther(await provider.getBalance(nativePoolAddress)));
+
+          const totalERC20Balance = erc20Balances.reduce((acc, balance) => acc + balance, 0);
+          const percentages = erc20Balances.map((balance) => ((balance / totalERC20Balance) * 100).toFixed(2));
+
+          renderERC20Chart(erc20Balances, percentages);
+          renderETHChart(nativeBalance);
+        }
+
+        function renderERC20Chart(erc20Balances, percentages) {
+          const ctx = document.getElementById('chart').getContext('2d');
+          new Chart(ctx, {
+            type: 'bar',
+            data: {
+              labels: ['GeneralPool', 'RewardPool', 'Poolquest'],
+              datasets: [
+                {
+                  label: 'ERC20 Balances',
+                  data: erc20Balances,
+                  backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(120, 162, 100, 0.2)'],
+                  borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(120, 162, 100, 1)'],
+                  borderWidth: 1,
+                },
+              ],
+            },
+            options: {
+              plugins: {
+                datalabels: {
+                  color: '#000',
+                  anchor: 'center',
+                  align: 'center',
+                  formatter: function (value, context) {
+                    return `${percentages[context.dataIndex]}%`;
+                  },
+                  font: {
+                    weight: 'bold',
+                  },
+                },
+              },
+              scales: {
+                y: {
+                  beginAtZero: true,
+                  title: {
+                    display: true,
+                    text: 'Balance',
+                  },
+                },
+                x: {
+                  title: {
+                    display: true,
+                    text: 'Ingame Nectar Pools',
+                  },
+                },
+              },
+            },
+            plugins: [ChartDataLabels],
+          });
+        }
+
+        function renderETHChart(nativeBalance) {
+          const ctx = document.getElementById('ethChart').getContext('2d');
+          new Chart(ctx, {
+            type: 'bar',
+            data: {
+              labels: ['Gas wallet Balance'],
+              datasets: [
+                {
+                  label: 'ETH Balance',
+                  data: [nativeBalance],
+                  backgroundColor: 'rgba(255, 206, 86, 0.2)',
+                  borderColor: 'rgba(255, 206, 86, 1)',
+                  borderWidth: 1,
+                },
+              ],
+            },
+            options: {
+              plugins: {
+                datalabels: {
+                  color: '#000',
+                  anchor: 'center',
+                  align: 'center',
+                  formatter: function (value) {
+                    return `${value} ETH`;
+                  },
+                  font: {
+                    weight: 'bold',
+                  },
+                },
+              },
+              scales: {
+                y: {
+                  beginAtZero: true,
+                  title: {
+                    display: true,
+                    text: 'Balance (ETH)',
+                  },
+                },
+                x: {
+                  title: {
+                    display: true,
+                    text: 'Native Token Pool',
+                  },
+                },
+              },
+            },
+            plugins: [ChartDataLabels],
+          });
+        }
+
+        await getPoolBalances();
+      });
+    </script>
+  </body>
+</html>

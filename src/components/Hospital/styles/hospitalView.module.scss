@@ -1,0 +1,438 @@
+.hospitalView {
+  :global {
+    .general-hospital-container {
+      display: grid;
+      grid-template-columns: 1fr;
+      row-gap: 5px;
+
+      @media (max-width: 991px) {
+        padding: 0 5px;
+        box-sizing: border-box;
+      }
+
+      @media (max-width: 480px) {
+        padding: 0 2px;
+        row-gap: 3px;
+      }
+      .header {
+        display: grid;
+        grid-template-columns: 0.8fr 1.2fr;
+        column-gap: 7px;
+
+        @media (max-width: 991px) {
+          grid-template-columns: 1fr;
+          row-gap: 10px;
+        }
+
+        .image {
+          > .hospitalPic {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            border-radius: 7px;
+            filter: drop-shadow(0px 4px 4px rgba(49, 49, 49, 0.8));
+            transition: all 0.2s ease-in-out;
+
+            max-height: 300px;
+
+            @media (min-width: 992px) {
+              max-height: none;
+              height: 100%;
+            }
+            @media (max-width: 480px) {
+              max-height: 250px;
+            }
+          }
+        }
+
+        .right-container {
+          display: grid;
+          grid-template-columns: 1fr;
+          row-gap: 5px;
+          background-color: $main-modal-bg-color;
+
+          .tickets-container {
+            background-color: $medium-brown;
+            padding: 5px;
+            border-radius: 5px;
+          }
+
+          .material {
+            max-width: 50px;
+
+            img {
+              width: 100%;
+              object-fit: contain;
+              background-color: $brown-dark;
+              border-radius: 10px;
+              border: 2px solid $gold-border;
+            }
+          }
+
+          .shop-tickets {
+            display: grid;
+            grid-template-columns: 1fr;
+            row-gap: 3px;
+
+            .ticket-pack {
+              background-color: $brown-light;
+              border-radius: 5px;
+              display: inline-flex;
+              justify-content: space-between;
+              transition: all 0.4s;
+
+              @media (max-width: 480px) {
+                gap: 3px;
+              }
+
+              &:hover {
+                background-color: $light-brown;
+                .buyToolButton {
+                  transition: all 0.3s ease;
+                  filter: saturate(1.1) brightness(1.1);
+                }
+              }
+
+              .body-ticket {
+                display: inline-flex;
+                justify-content: flex-start;
+                align-items: center;
+                gap: 0.3em;
+                margin-left: 10px;
+
+                @media (max-width: 480px) {
+                  margin-left: 5px;
+                  gap: 0.2em;
+                }
+
+                .img {
+                  background-color: $white;
+                  width: 70px;
+                  height: 70px;
+                  display: flex;
+                  align-content: center;
+                  justify-content: center;
+                  align-items: center;
+                  > img {
+                    width: 100%;
+                  }
+                }
+
+                .text {
+                  display: flex;
+                  flex-direction: column;
+                  padding-left: 5px;
+                  justify-content: center;
+
+                  p {
+                    margin: 0;
+
+                    &.pack-name {
+                      color: $primary-orange;
+                      font-size: 13px;
+                      margin-top: -5px;
+                    }
+
+                    &.pack-desc {
+                      font-weight: 700;
+                    }
+                  }
+                }
+              }
+
+              .box-buy {
+                display: inline-flex;
+                align-items: center;
+                justify-content: flex-end;
+                gap: 15px;
+
+                .cost {
+                  .material-required {
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 100%;
+                    gap: 3px;
+
+                    .price {
+                      margin: 0;
+                      display: inline-flex;
+                      align-items: center;
+                      min-width: 125px;
+                      background-color: $medium-brown;
+                      min-height: 40px;
+                      border-radius: 5px;
+                      padding: 0 15px;
+                      position: relative;
+
+                      @media (max-width: 991px) {
+                        min-width: 100px;
+                        padding: 0 10px;
+                      }
+
+                      @media (max-width: 480px) {
+                        min-width: 80px;
+                        padding: 0 8px;
+                        min-height: 35px;
+                      }
+
+                      .old-price {
+                        color: $medium-gray;
+                        font-weight: 300;
+                        font-size: 15px;
+                        text-decoration: line-through;
+                        display: inline-flex;
+                        position: absolute;
+                        right: 4px;
+                      }
+
+                      .final-price {
+                        .dollar {
+                          margin-right: 5px;
+                          color: $golden-yellow;
+                        }
+                      }
+
+                      img {
+                        height: 20px;
+                        margin-top: 7px;
+                        margin-left: 5px;
+                      }
+                    }
+
+                    &.unavailable {
+                      -webkit-filter: grayscale(100%);
+                      filter: grayscale(100%);
+                    }
+
+                    .textInsideCost {
+                      font-size: 15px;
+                      letter-spacing: -2px;
+                      font-weight: 300;
+                      color: gray;
+                    }
+
+                    .textInsideCostWithDiscount {
+                      font-size: 20px;
+                      letter-spacing: -2px;
+                      font-weight: 500;
+                    }
+
+                    .material-box {
+                      width: 30px;
+                      height: 30px;
+                      background-position: 60% 5%, 15% 6%;
+                      background-size: cover;
+                      border-radius: 50%;
+                      display: flex;
+                      justify-content: center;
+                      align-items: center;
+                      font-size: 15px;
+
+                      &.discount {
+                        background-color: $light-gold;
+                        border: 1px solid $orange-red;
+                        border-style: dashed;
+                        > span {
+                          margin-top: -3px;
+                        }
+                      }
+                    }
+                  }
+                }
+
+                .buyToolButton-box {
+                  height: 100%;
+                }
+
+                .buyToolButton {
+                  border: 0;
+                  border-radius: 0;
+                  width: 34px;
+                  height: 70px;
+                  min-height: 100%;
+                  display: flex;
+                  align-items: center;
+                  font-size: 20px;
+                  padding: 3px;
+                  cursor: pointer;
+                  transition: all 0.4s;
+                  background-image: url('/images/finals/hospital/purchase_btn_custom.png');
+                  background-size: 100% 100%;
+                  background-repeat: no-repeat;
+                  background-position: center center;
+                  border-top-right-radius: 5px;
+                  border-bottom-right-radius: 5px;
+                  width: 40px;
+
+                  .cartPic {
+                    width: 42px;
+                    margin-left: -4px;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .ants-container {
+        border: 2px solid $dark-brown;
+        height: 415px;
+        border-radius: 5px;
+        padding: 2px;
+        margin-bottom: 10px;
+
+        .current-pool {
+          display: inline-flex;
+          width: 100%;
+          justify-content: space-between !important;
+          align-items: center;
+          @include border-image-fill-stretch('/images/finals/hospital/pool_header.png');
+
+          .right-box {
+            display: flex;
+            align-items: center;
+            margin-right: 5px;
+          }
+
+          .pool-value {
+            padding-left: 18px;
+            font-weight: 700;
+
+            .value {
+              color: $primary-orange;
+            }
+          }
+
+          &.empty {
+            background-color: $light-red;
+          }
+
+          .button-undo {
+            max-width: 37px;
+            margin: 5px;
+            @include button-hover-without-text;
+            cursor: pointer;
+          }
+        }
+
+        .group-ants {
+          display: grid;
+          grid-template-columns: repeat(5, 1fr);
+          gap: 15px;
+          padding: 0 12px 0px 5px;
+          height: 345px;
+          overflow-y: auto;
+          overflow-x: hidden;
+          margin: 10px 8px 0 0;
+          grid-auto-flow: row;
+          grid-auto-rows: minmax(auto, 1fr);
+
+          @media (max-width: 991px) {
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            padding: 0 8px 0px 3px;
+          }
+
+          @media (max-width: 768px) {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+          }
+
+          @media (max-width: 480px) {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 5px;
+            padding: 0 5px 0px 2px;
+          }
+        }
+      }
+
+      .cure-btn {
+        @include border-image-fill-stretch('/images/finals/hospital/restore_btn_bg.png');
+        @include button-hover-without-text;
+
+        max-height: 45px;
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: 14px;
+        height: 35px;
+        padding: 0 20px;
+      }
+
+      .discount-box {
+        background-color: $olive-brown;
+        border-radius: 5px;
+        padding: 2px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        .title-discount {
+          @include border-image-fill-stretch('/images/finals/hospital/disc_header_bg.png');
+          min-height: 35px;
+
+          p {
+            margin: 0;
+          }
+        }
+
+        .footer-lvls {
+          display: flex;
+          width: 100%;
+          justify-content: space-between;
+          padding: 0 3px;
+          margin-top: 3px;
+          column-gap: 5px;
+
+          @media (max-width: 480px) {
+            flex-wrap: wrap;
+            column-gap: 3px;
+            row-gap: 3px;
+          }
+
+          .box-lvl {
+            flex: 1;
+            font-size: 13px;
+            border-radius: 3px;
+            background-color: $charcoal-brown;
+            margin-bottom: 3px;
+
+            p {
+              margin: 0;
+
+              &.lvl {
+                margin-top: 1px !important;
+                display: flex;
+                align-content: flex-start;
+                text-transform: uppercase;
+                font-size: 12px;
+                justify-content: center;
+
+                @media (max-width: 390px) {
+                  font-size: 11px;
+                }
+              }
+
+              &.text {
+                text-align: center;
+                margin-top: -5px;
+                text-transform: uppercase;
+                color: $primary-orange;
+
+                > span {
+                  text-transform: lowercase;
+                  font-size: 14px;
+                }
+              }
+            }
+
+            &.current {
+              background-color: $warm-yellow;
+            }
+          }
+        }
+      }
+    }
+  }
+}

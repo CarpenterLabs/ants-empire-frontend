@@ -1,0 +1,258 @@
+.roomDetailMain {
+  :global {
+    background-color: $main-modal-bg-color;
+    display: grid;
+    grid-template-columns: 246px 1fr; // Left fixed, right flexible
+    grid-template-areas: 'left right';
+
+    .left {
+      grid-area: left;
+      width: 100%; // full width of its grid column
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 1rem 0.5rem;
+
+      .stats {
+        margin-bottom: 1rem;
+        margin-top: 1rem;
+        width: 100%;
+
+        .stat {
+          margin: 0.2rem 0;
+          color: #fff;
+          padding: 12px;
+          display: flex;
+          width: 100%;
+          justify-content: space-between !important;
+
+          .value {
+            font-weight: bold;
+            color: $primary-orange;
+
+            .sub {
+              color: white;
+            }
+          }
+
+          .title {
+            padding-left: 1rem;
+          }
+
+          &.pwr {
+            @include border-image-fill-stretch('/images/finals/roomDetail/totalpower_bg_long2.png');
+          }
+
+          &.total {
+            @include border-image-fill-stretch('/images/finals/roomDetail/totalpower_bg_long2.png');
+          }
+        }
+      }
+
+      .levelUpBtn {
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: 6px;
+        background-color: transparent;
+        cursor: pointer;
+        color: #fff;
+        background-image: url('/images/finals/roomDetail/lvl_up_btn_bg.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        width: 150px;
+        height: 43px;
+        font-family: 'Slackey';
+        line-height: 1;
+        font-weight: bolder;
+        @include button-hover-without-text;
+      }
+
+      .levelZone {
+        z-index: 1;
+        min-width: 7rem;
+        min-height: 7rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background-image: url('/images/finals/roomDetail/lvl_bg.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        margin-bottom: -25px;
+        color: white;
+
+        .lvlVal {
+          font-family: 'Slackey';
+          color: $primary-orange;
+          font-size: 30px;
+          line-height: 1;
+          font-weight: bolder;
+        }
+      }
+
+      .roomImg {
+        margin-bottom: 1rem;
+
+        .roomEmblem {
+          width: 95%;
+        }
+      }
+    }
+
+    .right {
+      grid-area: right;
+      padding: 0.2rem;
+
+      .cardGrid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 0.2rem;
+        background: $brown-muted;
+        padding: 5px;
+        border-radius: 10px;
+        border: 1px solid #875430;
+      }
+
+      .cardSlot {
+        aspect-ratio: 3 / 4;
+        border-radius: 8px;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &.withAnt {
+          background: #91c49d;
+        }
+
+        .cardButtons {
+          position: absolute;
+          top: 0.5rem;
+          right: 0.5rem;
+          display: flex;
+          flex-direction: column;
+          gap: 0.25rem;
+
+          .detailBtn {
+            background-color: #f8a62b;
+          }
+
+          .removeBtn {
+            background-color: #da4242;
+          }
+
+          button {
+            color: #fff;
+            border: none;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            cursor: pointer;
+          }
+        }
+
+        .emptySlot {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          &.emptyAndLocked {
+            filter: opacity(0.4);
+            cursor: not-allowed;
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.6), inset 6px 6px 12px rgba(0, 0, 0, 0.25);
+          }
+
+          &.canAdd {
+            background-color: #432b20;
+            border: 1px solid #9a6034;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.6), inset 6px 6px 12px rgba(0, 0, 0, 0.25);
+          }
+
+          img {
+            &.blockedimg {
+              width: 98%;
+              height: 98%;
+            }
+
+            &.addimg {
+              width: 80px;
+              height: 80px;
+              transition: filter 0.5s ease;
+              filter: drop-shadow(1px 1px 3px rgba(15, 7, 7, 0.9));
+              
+
+              &:hover{
+                transition: filter 0.5s ease;
+                filter: drop-shadow(1px 1px 6px rgba($primary-orange, 0.9));
+              }
+            }
+          }
+        }
+      }
+    }
+
+    /* ✅ Responsive Grid Adjustments */
+    @media (max-width: 1024px) {
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        'left'
+        'right';
+
+      .right .cardGrid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .left {
+        .stats {
+          width: 75%;
+        }
+      }
+    }
+
+    @media (max-width: 768px) {
+      .right .cardGrid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .left {
+        .stats {
+          width: 100%;
+        }
+      }
+    }
+
+    @media (max-width: 480px) {
+      .right .cardGrid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .left {
+        .levelZone {
+          min-width: 5rem;
+          min-height: 5rem;
+
+          .lvlVal {
+            font-size: 20px;
+          }
+        }
+
+        .stats {
+          width: 100%;
+        }
+
+        .levelUpBtn {
+          width: 120px;
+          height: 35px;
+          font-size: 0.8rem;
+        }
+      }
+    }
+  }
+}

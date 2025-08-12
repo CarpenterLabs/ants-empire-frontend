@@ -1,0 +1,218 @@
+// VARIABLES
+$break: 1100px;
+//****
+
+.itemAssignerView {
+  :global {
+    .general-box {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      max-height: 470px;
+      overflow: hidden;
+
+      @media (max-width: $break) {
+        max-height: none;
+      }
+
+      .list-ants {
+        grid-column: 1/4;
+        min-width: 30rem;
+
+        @media (max-width: $break) {
+          grid-column: 1/8;
+          min-width: 0;
+        }
+
+        .toAssign-items {
+          padding-top: 2px;
+          margin-top: 15px;
+          // min-height: 28rem;
+          display: grid;
+          grid-template-columns: repeat(auto-fill, 9rem);
+          row-gap: 8px;
+          column-gap: 10px;
+          max-height: 430px;
+          overflow: auto;
+          padding-bottom: 8px;
+
+          @media (max-width: $break) {
+            padding-bottom: 8px;
+            min-height: auto;
+            justify-content: center;
+          }
+
+          @media (min-width: 802px) and (max-width: $break) {
+            column-gap: 7px;
+            padding-right: 10px;
+          }
+
+          &::-webkit-scrollbar-track {
+            background-color: rgba(0, 0, 0, 0.4);
+            border-radius: 10px;
+          }
+        }
+      }
+
+      .arrow {
+        grid-column: 4/5;
+        margin: 0 25px;
+        display: grid;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        @media (max-width: $break) {
+          grid-column: 1/8;
+          transform: rotate(90deg);
+        }
+
+        img {
+          &:local {
+            animation: arrowAssign 700ms linear infinite;
+          }
+        }
+      }
+
+      .list-colonies {
+        grid-column: 5/8;
+        width: 30rem;
+        max-width: min-content;
+        min-height: 31rem;
+
+        @media (max-width: $break) {
+          grid-column: 1/8;
+          width: 100%;
+          min-height: 0;
+          max-width: 100%;
+          display: flex;
+          justify-content: center;
+        }
+
+        .coloniesToSelect {
+          overflow-x: auto;
+          justify-content: start;
+        }
+      }
+
+      .toolbar {
+        padding: 0rem 0rem 1.2rem 0rem;
+
+        .cnclBtn {
+          margin-left: 0.7rem;
+        }
+      }
+
+      .arrowImg {
+        margin-top: 0.5rem;
+        filter: hue-rotate(150deg);
+        max-width: 50px;
+        box-shadow: 12px -7px 7px -7px rgb(0 0 0 / 20%);
+        border-radius: 100%;
+      }
+    }
+  }
+
+  @keyframes arrowAssign {
+    0% {
+      transform: translate(0px, 0);
+    }
+
+    50% {
+      transform: translate(10px, 0);
+    }
+
+    100% {
+      transform: translate(0, 0);
+    }
+  }
+}
+
+.errorModalRegion {
+  :global {
+    min-width: fit-content !important;
+
+    .modal-content {
+      border: 2px solid white;
+      border-radius: 5px;
+      .modal-body {
+        background: $main-modal-bg-color;
+        padding: 0px 5px 5px 5px;
+      }
+    }
+
+    .mainErrorModalRegion {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      // background-image: url('/images/finals/expedition/result/KO_paper_BG.png');
+      // background-repeat: no-repeat;
+      // background-position: center;
+      // background-size: 100% 100%;
+      padding: 1rem 0rem;
+
+      .destColonyTitle {
+        margin-top: 1rem;
+        color: black;
+        font-weight: bolder;
+        font-size: 20px;
+      }
+
+      .roomsZone {
+        display: flex;
+        gap: 2rem;
+        // margin: 1rem 0rem;
+
+        .wrapper {
+          background-image: url('/images/finals/expedition/result/KO_paper_BG.png');
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: 100% 100%;
+        }
+
+        .inRoomInfo {
+          display: flex;
+          flex-direction: column;
+          padding: 1rem;
+
+          .roomTitle {
+            padding: 3px 3px;
+            color: white;
+            font-weight: bolder;
+            display: flex;
+            flex-direction: column-reverse;
+            align-items: center;
+            width: 100%;
+            row-gap: 10px;
+            font-family: 'Slackey';
+            font-size: 20px;
+
+            img {
+              width: 55%;
+              filter: drop-shadow(1px 1px 3px rgba(68, 61, 61, 0.9));
+            }
+          }
+
+          .errorInfoDetailed {
+            display: flex;
+            width: 100%;
+            flex-direction: column;
+            background-image: url('/images/finals/seller/board_BG_edited.png');
+            background-repeat: no-repeat;
+            background-position: top center;
+            background-size: 100% 100%;
+            padding: 1rem 2rem;
+            filter: drop-shadow(1px 1px 3px rgba(68, 61, 61, 0.9));
+            row-gap: 5px;
+            .sectTitle {
+              font-weight: bolder;
+              color: white;
+              span {
+                color: $primary-orange;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

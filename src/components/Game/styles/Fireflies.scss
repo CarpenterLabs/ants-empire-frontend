@@ -1,0 +1,57 @@
+.firefly {
+  position: fixed;
+  left: 50%;
+  top: 10%;
+  width: 0.4vw;
+  height: 0.4vw;
+  margin: -0.2vw 0 0 9.8vw;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.firefly::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: rgb(0, 0, 0, 0.2);
+  opacity: 0.4;
+  transform-origin: -10vw;
+  animation: drift 12s linear infinite;
+}
+
+.glow {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: white;
+  opacity: 0.15;
+  box-shadow: 0 0 0vw 0vw yellow;
+  transform-origin: -10vw;
+  animation: drift 12s linear infinite, flash ease-in-out infinite;
+}
+
+@keyframes drift {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes flash {
+  0%,
+  30%,
+  100% {
+    opacity: 0.15;
+    box-shadow: 0 0 0vw 0vw yellow;
+  }
+  5% {
+    opacity: 1;
+    box-shadow: 0 0 2vw 0.4vw yellow;
+  }
+}

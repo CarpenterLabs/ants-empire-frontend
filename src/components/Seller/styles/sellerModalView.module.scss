@@ -1,0 +1,536 @@
+.sellerModalView {
+  :global {
+    display: grid;
+    grid-template-columns: 3fr 7fr;
+    border-radius: 8px;
+    color: $white;
+    gap: 5px;
+
+    .column-left,
+    .column-right {
+      display: grid;
+      gap: 5px;
+    }
+
+    // Columna izquierda: imagen + tabla de precios
+    .column-left {
+      .container-img {
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        width: 100%;
+        max-height: 248px;
+
+        .sellerPic {
+          margin-top: -65px;
+          max-width: 80%;
+          width: 100%;
+          object-fit: contain;
+          border-radius: 7px;
+          filter: drop-shadow(0px 4px 4px rgba(49, 49, 49, 0.8));
+          transition: all 0.2s ease-in-out;
+        }
+      }
+
+      .container-price {
+        .container-title {
+          @include border-image-fill-stretch('/images/finals/seller/price_header_BG.png');
+          justify-content: flex-start;
+          min-height: 50px;
+          padding-left: 20px;
+          font-weight: 700;
+        }
+
+        .container-prices {
+          background-image: url('/images/finals/seller/board_BG_edited.png');
+          background-repeat: no-repeat;
+          background-position: top center;
+          background-size: 100% 100%;
+          padding: 1rem;
+
+          .grid-materials {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 5px;
+
+            .box-material {
+              display: flex;
+              align-items: center;
+              gap: 10px;
+
+              &.discount {
+                position: relative;
+                overflow: hidden;
+                border-radius: 10px;
+                background: linear-gradient(
+                  to right,
+                  rgba(63, 46, 39, 0.5) 0%,
+                  rgba(63, 46, 39, 0.3) 75%,
+                  rgba(63, 46, 39, 0) 100%
+                );
+              }
+
+              &.unavailable {
+                opacity: 0.4;
+                filter: grayscale(100%);
+              }
+
+              .material {
+                max-width: 50px;
+
+                img {
+                  width: 100%;
+                  object-fit: contain;
+                  background-color: $brown-dark;
+                  border-radius: 10px;
+                  border: 2px solid $gold-border;
+                }
+              }
+
+              .internal-box {
+                .value {
+                  font-weight: 700;
+                  color: $gold-light;
+                }
+                .text {
+                  font-weight: 300;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    // Columna derecha: barra de info + zona de swap
+    .column-right {
+      .bar-info {
+        margin-top: 3px;
+        border-radius: 6px;
+        padding: 8px 12px;
+        font-size: 0.95rem;
+        @include border-image-fill-stretch('/images/finals/seller/capacity_BG.png');
+        display: inline-flex;
+        height: 60px;
+
+        .inferior-bar {
+          width: 100%;
+          display: inline-flex;
+          align-items: center;
+
+          img {
+            max-width: 45px;
+            margin-top: -5px;
+          }
+
+          .total-material {
+            width: 25%;
+            padding-right: 0.5rem;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            justify-content: flex-start;
+            font-size: 16px;
+
+            p {
+              margin: 0 5px;
+              font-weight: 300;
+            }
+
+            .current {
+              color: $primary-orange;
+              &.red {
+                color: $orange-danger;
+              }
+            }
+            .max {
+              color: $white;
+            }
+          }
+
+          .materials {
+            width: 75%;
+            display: inline-flex;
+            justify-content: space-around;
+
+            .box-type {
+              display: flex;
+              align-items: center;
+              .material {
+                display: inline-flex;
+                align-items: center;
+                font-weight: 700;
+              }
+            }
+          }
+        }
+      }
+
+      .count-badge {
+        font-size: 16px;
+      }
+
+      .container-swap {
+        position: relative;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+          'user-materials seller-materials'
+          'container-button container-button';
+        column-gap: 3px;
+        margin-bottom: 5px;
+
+        .swap-box {
+          background-color: $brown-medium;
+          padding-bottom: 5px;
+          border-radius: 5px;
+          border: 1px solid $brown-dark;
+        }
+
+        .user-materials,
+        .seller-materials {
+          border-radius: 6px;
+
+          .title {
+            padding: 0 5px 0 15px;
+
+            &.user {
+              @include border-image-fill-stretch('/images/finals/seller/material_header_BG.png');
+              display: inline-flex;
+              width: 100%;
+              align-items: center;
+              justify-content: space-between;
+            }
+
+            &.seller {
+              @include border-image-fill-stretch('/images/finals/seller/available_material_header_BG.png');
+              display: inline-flex;
+              width: 100%;
+              align-items: center;
+              justify-content: space-between;
+            }
+
+            .title-text {
+              font-weight: 700;
+            }
+            .title-icon {
+              cursor: pointer;
+              .button-undo {
+                max-width: 40px;
+                margin: 5px;
+                @include button-hover-without-text;
+              }
+            }
+          }
+
+          .grid-swap {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            padding: 0 5px;
+          }
+
+          .material-box {
+            display: flex;
+            align-items: center;
+            background-color: $brown-light;
+            border-radius: 5px;
+            padding: 5px 8px;
+
+            &.unavailable {
+              opacity: 0.4;
+              filter: grayscale(100%);
+              cursor: not-allowed;
+
+              .range-box {
+                pointer-events: none;
+              }
+            }
+          }
+
+          .material {
+            flex: 0 0 50px;
+            margin-right: 12px;
+            img {
+              width: 100%;
+              object-fit: contain;
+              background-color: $brown-dark;
+              border-radius: 10px;
+              border: 2px solid $gold-border;
+            }
+          }
+
+          .range-box {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            width: 100%;
+
+            span {
+              width: 100%;
+            }
+
+            input[type='range'] {
+              -webkit-appearance: none;
+              appearance: none;
+              width: 95%;
+              height: 12px;
+              background: transparent;
+              border: none;
+              outline: none;
+            }
+            input[type='range']::-webkit-slider-runnable-track {
+              background: $gray-dark;
+              height: 12px;
+              border-radius: 6px;
+            }
+            input[type='range']::-webkit-slider-thumb {
+              -webkit-appearance: none;
+              appearance: none;
+              width: 24px;
+              height: 24px;
+              margin-top: -6px;
+              background: url('/images/finals/icons/slider.png') no-repeat center;
+              background-size: contain;
+              border: none;
+              cursor: pointer;
+            }
+            input[type='range']::-moz-range-track {
+              background: $gray-dark;
+              height: 12px;
+              border-radius: 6px;
+            }
+            input[type='range']::-moz-range-progress {
+              background: $gray-dark;
+              height: 12px;
+              border-radius: 6px;
+            }
+            input[type='range']::-moz-range-thumb {
+              width: 24px;
+              height: 24px;
+              background: url('/images/finals/icons/slider.png') no-repeat center;
+              background-size: contain;
+              border: none;
+              cursor: pointer;
+            }
+
+            p {
+              min-width: 35px;
+              margin: 5px 10px 0 0;
+              text-align: center;
+              color: $white;
+              font-weight: bold;
+            }
+
+            input {
+              display: block;
+              flex: 0 0 65px;
+              height: 33px;
+              background-color: $brown-muted;
+              border: 1px solid $gray-dark;
+              border-radius: 3px;
+              color: $white;
+              font-weight: 700;
+              text-align: center;
+              padding: 0;
+            }
+          }
+
+          .materials-total-value {
+            margin: 10px 2px;
+            height: 40px;
+            @include border-image-fill-stretch('/images/finals/seller/total_BG.png');
+            border-radius: 5px;
+
+            .title.total {
+              margin: 0;
+              display: inline-flex;
+              align-items: center;
+              font-weight: 700;
+              color: $yellow-light;
+              font-size: 1.3rem;
+            }
+          }
+        }
+
+        .container-button {
+          grid-area: container-button;
+          text-align: center;
+          font-weight: bold;
+          cursor: pointer;
+          position: absolute;
+          bottom: -4px;
+          width: 100%;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+
+          .btn-box {
+            border-radius: 6px;
+            padding: 5px;
+            .swapBtn {
+              @include button-custom('/images/finals/buttons/assign_btn_bg.png', 150px, 54px);
+              @include button-hover-intense;
+            }
+            &.disabled {
+              filter: grayscale(100%) brightness(90%);
+              cursor: not-allowed;
+              transition: filter 0.2s ease;
+            }
+          }
+        }
+      }
+    }
+
+    // MEDIA QUERY PARA ≤1500px
+    @media (max-width: 1500px) {
+      grid-template-columns: 1fr;
+      width: 100%;
+
+      .column-left {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+        align-items: stretch;
+
+        .container-img,
+        .container-price {
+          width: 100%;
+          height: 100%;
+          min-width: 0;
+        }
+
+        .container-img {
+          overflow: hidden;
+          .sellerPic {
+            height: 100%;
+            width: auto;
+            object-fit: contain;
+            margin-top: 0;
+          }
+        }
+      }
+
+      .column-right {
+        width: 100%;
+        min-width: 0;
+      }
+    }
+
+    // MEDIA QUERY PARA ≤991px
+    @media (max-width: 991px) {
+      .column-left {
+        grid-template-columns: 1fr;
+      }
+
+      .column-right {
+        .bar-info {
+          width: 100%;
+          padding: 0;
+
+          .inferior-bar .total-material p {
+            display: none;
+          }
+        }
+
+        .container-swap {
+          grid-template-columns: 1fr;
+          grid-template-areas:
+            'user-materials'
+            'seller-materials'
+            'container-button';
+          row-gap: 10px;
+          width: 100%;
+
+          .container-button {
+            position: relative;
+            bottom: 8px;
+          }
+        }
+      }
+    }
+
+    // MEDIA QUERY PARA ≤450px
+    @media (max-width: 450px) {
+      .column-right {
+        .bar-info {
+          padding: 4px 6px;
+          font-size: 0.8rem;
+          min-height: 50px;
+          overflow: hidden;
+          height: auto !important;
+
+          .inferior-bar {
+            transform: scale(0.85);
+            width: 117.65%;
+
+            img {
+              max-width: 35px;
+            }
+
+            .total-material {
+              font-size: 14px;
+              width: 30%;
+              padding-right: 0.3rem;
+            }
+
+            .materials {
+              width: 70%;
+
+              .box-type .material {
+                font-size: 0.9rem;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    // MEDIA QUERY PARA ≤350px
+    @media (max-width: 350px) {
+      .column-right {
+        .bar-info {
+          padding: 2px 4px;
+          font-size: 0.75rem;
+          min-height: 45px;
+
+          .inferior-bar {
+            transform: scale(0.75);
+            width: 133.33%;
+
+            img {
+              max-width: 30px;
+            }
+
+            .total-material {
+              font-size: 12px;
+              width: 35%;
+              padding-right: 0.2rem;
+            }
+
+            .materials {
+              width: 65%;
+
+              .box-type .material {
+                font-size: 0.8rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.sellerCallView {
+  :global {
+    .general-box {
+      color: white;
+      text-align: center;
+      font-weight: 500;
+      padding-top: 5px;
+    }
+  }
+}

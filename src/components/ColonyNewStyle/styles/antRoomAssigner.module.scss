@@ -1,0 +1,143 @@
+.addAntsToRoomMainRegion {
+  :global {
+    .infoArea {
+      display: flex;
+      justify-content: space-between;
+      padding: 5px 10px;
+      background: #3f2e26;
+      border-radius: 3px;
+      margin: 2px;
+      margin-bottom: 2rem;
+      align-items: center;
+
+      .pleaseMsg {
+        color: $primary-orange;
+        font-size: 14px;
+      }
+
+      .dynamicSelectZone {
+        font-weight: bold;
+        margin-left: auto;
+        margin-right: 1rem;
+        .selected {
+          color: white;
+        }
+
+        .currentSelectionCount {
+          color: $primary-orange;
+        }
+
+        .roomMaxAnts {
+          color: white;
+        }
+      }
+
+      .power {
+        background: #c16c22;
+        padding: 2px 8px;
+        border: 1px solid #e3a454;
+        border-radius: 4px;
+
+        .pwr {
+          color: white;
+          font-weight: bold;
+        }
+
+        .selectedSum {
+          color: $primary-orange;
+        }
+
+        .maxsum {
+          color: white;
+        }
+
+        &.error {
+          background-color: #c02c0b61;
+        }
+      }
+    }
+
+    .currentRoomInfo {
+      padding: 0px 0.5rem;
+      @include border-image-fill-stretch('/images/finals/addAntToRoom/room_info_Bg.png');
+      justify-content: space-between;
+      height: 45px;
+      width: 100%;
+      .antsPower {
+        text-transform: uppercase;
+        margin: 0;
+        padding-left: 5px;
+
+        .pwr {
+          color: white;
+          font-weight: 600;
+        }
+
+        .pwrCurr {
+          color: $primary-orange;
+        }
+
+        .pwrTotal {
+          color: white;
+        }
+      }
+
+      .antsCountOnRoom {
+        .apostrofe {
+          color: white;
+          padding-right: 5px;
+        }
+        .miniAntIcon {
+          width: 20px;
+          margin-top: -5px;
+        }
+
+        .roomCount {
+          background-color: #464233;
+          padding: 3px 8px;
+          margin-left: 5px;
+          border-radius: 2px;
+          display: inline-flex;
+
+          .curr {
+            color: $primary-orange;
+            font-weight: bold;
+            padding-right: 2px;
+          }
+
+          .roomCountTotal {
+            color: white;
+          }
+        }
+      }
+    }
+
+    .antsToAssign {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+    }
+  }
+}
+
+.assignAntToRoomModal {
+  :global {
+    .modal-title {
+      width: 100%;
+    }
+  }
+}
+
+.assignModalHeader {
+  :global {
+    .assignerHeader {
+      display: flex;
+      justify-content: center;
+      padding: 0px 0.5rem;
+      text-align: center;
+    }
+  }
+}

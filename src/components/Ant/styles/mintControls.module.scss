@@ -1,0 +1,17 @@
+.mintControls{
+    :global{
+        display: inline-flex;
+
+        input{
+            min-width:94px;
+        }
+
+        button.btn-primary{
+            margin-left: 15px;
+            &.disabled-true{
+                background-color: grey !important;
+                border-color: grey !important;
+            } 
+        }
+    }
+}

@@ -1,0 +1,17 @@
+.coolDownAnt {
+  :global {
+    .coolDownContent {
+      position: absolute;
+      width: 100%;
+      background: white;
+      z-index: 1;
+      border-radius: 5px;
+
+      text-align: center;
+      p {
+        font-size: 11px;
+        margin-bottom: 0;
+      }
+    }
+  }
+}

@@ -1,0 +1,72 @@
+// ----------------------
+// Declaración de @font-face para las familias Oxanium y Slackey.
+
+// Ejemplo de uso:
+// .mi-titulo {
+//   font-family: 'Oxanium', sans-serif;
+//   font-weight: 700;
+// }
+
+@font-face {
+  font-family: 'Oxanium';
+  src: url('../assets/fonts/Oxanium-ExtraLight.woff2') format('truetype');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Oxanium';
+  src: url('../assets/fonts/Oxanium-Light.woff2') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Oxanium';
+  src: url('../assets/fonts/Oxanium-Regular.woff2') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Oxanium';
+  src: url('../assets/fonts/Oxanium-Medium.woff2') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Oxanium';
+  src: url('../assets/fonts/Oxanium-SemiBold.woff2') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Oxanium';
+  src: url('../assets/fonts/Oxanium-Bold.woff2') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Oxanium';
+  src: url('../assets/fonts/Oxanium-ExtraBold.woff2') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Slackey';
+  src: url('../assets/fonts/Slackey-Regular.woff2') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}

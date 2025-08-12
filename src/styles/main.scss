@@ -1,0 +1,17 @@
+// --------------------------------------------------------------------------------
+// Punto de entrada principal: importa todos los parciales en el orden correcto.
+// Variables → Funciones → Mixins → Base → Layout → Utilities
+// --------------------------------------------------------------------------------
+
+// 1) Helpers sin CSS: variables, funciones y mixins
+@import 'variables';
+@import 'functions';
+@import 'mixins';
+
+// 2) @font-face (genera CSS)
+@import "fonts";
+
+// 3) Estilos “reales” (solo se emiten una vez)
+@import 'base';
+@import 'layout';
+@import 'utilities';

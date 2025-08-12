@@ -1,0 +1,158 @@
+.antCard {
+  transition: all .25s ease-in-out;
+  cursor: pointer;
+  transition: all 0.4s;
+
+  display: grid;
+  justify-content: center;
+
+  &:hover {
+    box-shadow: 0 10px 10px -10px rgb(0 0 0 / 50%);
+    transform: translateY(-4px);
+  }
+
+  :global {
+
+    .card {
+      width: 15rem;
+      -webkit-box-shadow: 11px 11px 5px -8px rgba(0, 0, 0, 0.75);
+      -moz-box-shadow: 11px 11px 5px -8px rgba(0, 0, 0, 0.75);
+      box-shadow: 11px 11px 5px -8px rgba(0, 0, 0, 0.75);
+
+      &.rarity {
+        &-common {
+          background-color: #00ff0824;
+        }
+
+        &-rare {
+          background-color: #0072ff24;
+        }
+
+        &-epic {
+          background-color: #bd4bf74a;
+        }
+
+        &-legendary {
+          background-color: #ffd700cc;
+        }
+      }
+
+      .card-img {
+        &.specie {
+          &.blue {
+            filter: hue-rotate(182deg);
+          }
+
+          &.red {
+            filter: hue-rotate(329deg);
+          }
+
+          &.green {
+            filter: hue-rotate(44deg);
+          }
+
+          &.yellow {
+            filter: hue-rotate(248deg);
+          }
+        }
+      }
+
+      .card-title {
+        text-transform: uppercase;
+        text-align: center;
+        font-size: 1.5em;
+      }
+
+      .box-type {
+        display: inline-flex;
+        background-color: #f7f7f7;
+        width: 100%;
+        justify-content: space-evenly;
+
+        .power {
+          width: 45px;
+          margin: 5px;
+
+          span {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            font-size: 1.5em;
+
+            padding: 0px;
+            border-radius: 20px;
+
+            &.rarity {
+              &-common {
+                background-color: #00ff0824;
+              }
+
+              &-rare {
+                background-color: #0072ff24;
+              }
+
+              &-epic {
+                background-color: #bd4bf74a;
+              }
+
+              &-legendary {
+                background-color: #ffd700cc;
+              }
+            }
+          }
+        }
+
+        img {
+          width: 45px;
+          padding: 0px;
+          border-radius: 20px;
+          margin: 5px;
+
+          &.type {
+            &.worker {
+              background-color: #ffa41d82;
+            }
+
+            &.soldier {
+              background-color: #ff471d82;
+            }
+
+            &.flying {
+              background-color: #feabff82;
+            }
+          }
+
+          &.specie {
+            &.blue {
+              background-color: #49acfb80;
+            }
+
+            &.red {
+              background-color: #f5785ab8;
+            }
+
+            &.white {
+              background-color: #f8922c9e;
+            }
+
+            &.green {
+              background-color: #85b92773;
+            }
+
+            &.yellow {
+              background-color: #eb79fc5e;
+            }
+          }
+        }
+      }
+
+      .button-box {
+        width: 100%;
+        display: inline-flex;
+        justify-content: space-evenly;
+      }
+    }
+  }
+}

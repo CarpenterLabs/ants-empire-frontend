@@ -1,0 +1,442 @@
+.CustomModal {
+  :global {
+    .largeHeader {
+      .modal-title {
+        width: 100%;
+      }
+    }
+
+    .withWhiteBorder {
+      .modal-content {
+        border: 2px solid white !important;
+      }
+    }
+
+    .sellerModalBody {
+      background-color: $main-modal-bg-color;
+      font-family: 'Oxanium';
+      color: white;
+      padding: 0 10px;
+    }
+
+    .hospitalModalBody {
+      background-color: $main-modal-bg-color;
+      font-family: 'Oxanium';
+      color: white;
+      padding: 0 10px;
+
+      @media (max-width: 991px) {
+        padding: 0;
+      }
+    }
+
+    .sellerModalFooter {
+      background-color: $main-modal-bg-color;
+      border: 0;
+
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-around;
+
+      .levelUpBtn {
+        @include button-custom('/images/finals/buttons/assign_btn_bg.png', 150px, 54px);
+        @include button-hover-intense;
+
+        &.cancel {
+          background-image: url('/images/finals/buttons/cancel_btn_bg.png');
+        }
+      }
+    }
+
+    .modal-dialog {
+      &.expe {
+        .modal-header {
+          margin-bottom: -55px;
+          // margin-bottom: -39px;
+          button {
+            background-color: white;
+            z-index: 9999;
+            margin-right: 0px;
+            margin-top: -6px;
+            padding-top: 6px;
+          }
+        }
+        .modal-content {
+          background-color: $main-modal-bg-color;
+          border: 2px solid white;
+        }
+      }
+      &.rewardPackModal {
+        min-width: 1200px;
+      }
+
+      &.max {
+        @media (min-width: 1501px) {
+          min-width: 1500px;
+        }
+
+        @media (max-width: 1500px) {
+          min-width: unset !important;
+          width: 100% !important;
+        }
+      }
+
+      &.xxl {
+        min-width: 1500px;
+        display: flex;
+        flex-direction: column;
+        height: 90vh; // fixed modal height — can be 100vh too
+
+        .modal-content {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          border: none;
+          overflow: hidden; // important: disables modal-level scroll
+        }
+
+        &.finished {
+          display: none;
+        }
+
+        // Responsive overrides
+        @media (max-width: 1400px) {
+          min-width: 100%;
+          padding: 0 1rem;
+          margin-bottom: 0px;
+          // margin-top: 1rem;
+          bottom: 0;
+
+          .modal-content {
+            border: none;
+          }
+        }
+
+        @media (max-width: 1200px) {
+          min-width: 100%;
+          padding: 0 1rem;
+          margin-bottom: 0px;
+          // margin-top: 1rem;
+          bottom: 0;
+
+          .modal-content {
+            border: none;
+
+            .npcsContainer {
+              height: 73vh;
+            }
+          }
+        }
+
+        @media (max-width: 992px) {
+          min-width: 100%;
+          padding: 0 1rem;
+          margin-bottom: 0px;
+          // margin-top: 1rem;
+          bottom: 0;
+
+          .modal-content {
+            border: none;
+
+            .npcsContainer {
+              height: 70vh;
+            }
+          }
+        }
+
+        @media (max-width: 768px) {
+          min-width: 100%;
+          padding: 0 1rem;
+          margin-bottom: 0px;
+          margin-top: 1rem;
+          bottom: 0;
+          .modal-content {
+            border: none;
+
+            .npcsContainer {
+              height: 75vh;
+            }
+          }
+        }
+      }
+
+      &.xxxl {
+        min-width: 1600px;
+
+        .modal-content {
+          min-height: 800px;
+        }
+      }
+
+      &.xxxxl {
+        min-width: 1900px;
+        margin-top: 5px;
+
+        .modal-content {
+          min-height: 920px;
+        }
+      }
+    }
+
+    .fit-content {
+      &.modal-dialog {
+        max-width: min-content !important;
+
+        @media (max-width: 1100px) {
+          max-width: 800px !important;
+        }
+      }
+    }
+
+    .micro {
+      max-width: 250px;
+    }
+
+    .blackSmithModalMain {
+      .modal-content {
+        border: 2px solid white;
+        border-radius: 5px;
+        .modal-body {
+          background: $main-modal-bg-color; // TODO TO MOVE COLORS VARIABLES (MODAL BACKGROUND MAIN COLOR??)
+          padding: 0px 5px 5px 5px;
+        }
+      }
+    }
+
+    .addAntToRoomModalMain {
+      .modal-content {
+        border: 2px solid white;
+        border-radius: 5px;
+        background: #5d3c2e;
+        .modal-body {
+          background: $main-modal-bg-color; // TODO TO MOVE COLORS VARIABLES (MODAL BACKGROUND MAIN COLOR??)
+          padding: 0px 5px 5px 5px;
+        }
+      }
+      .modal-footer {
+        background: #786154;
+        border: none;
+        margin: 5px;
+        padding: 5px;
+        border-radius: 5px;
+
+        .footerAssigner {
+          display: inline-flex;
+          justify-content: space-between;
+          width: 100%;
+          align-items: center;
+          margin: 0;
+
+          .textInventory {
+            padding-left: 5px;
+            .main {
+              color: $primary-orange;
+            }
+
+            .type {
+              font-weight: bold;
+              color: white;
+            }
+          }
+
+          .assignBtn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 6px;
+            background-color: transparent;
+            cursor: pointer;
+            color: #fff;
+            background-image: url('/images/finals/roomDetail/lvl_up_btn_bg.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            width: 150px;
+            height: 43px;
+            font-family: 'Slackey';
+            line-height: 1;
+            font-weight: bolder;
+            @include button-hover-without-text;
+          }
+        }
+      }
+    }
+
+    .dormitoryMainModal {
+      max-width: 1250px;
+      .modal-content {
+        border: 2px solid white;
+        border-radius: 5px;
+        .modal-body {
+          background: $main-modal-bg-color;
+          padding: 0px 5px 5px 5px;
+        }
+      }
+    }
+
+    .expeModalMain {
+      .modal-content {
+        border: 2px solid white !important;
+        // border-radius: 5px !important;
+        .modal-body {
+          background: $main-modal-bg-color;
+          // padding: 0px 5px 5px 5px;
+        }
+      }
+    }
+
+    .standarModalHeader {
+      @include border-image-fill-stretch('/images/finals/blacksmith/header_bg.png');
+      // padding: 2px 0;
+      width: 100%;
+      justify-content: space-around;
+      display: inline-flex;
+      background-color: $main-modal-bg-color;
+
+      &.expe {
+        @include border-image-fill-stretch('/images/finals/expedition/title_bg.png');
+      }
+
+      .modal-title {
+        width: 100%;
+        text-align: center;
+        font-family: 'Slackey';
+        text-transform: uppercase;
+        color: white;
+
+        .modalCloseImg {
+          width: 45px;
+          height: 45px;
+          cursor: pointer;
+          right: 10px;
+          position: absolute;
+          top: 8px;
+          @include button-hover-without-text;
+        }
+      }
+    }
+    .upgrade-modal {
+      &.workshopModal {
+        max-width: 765px;
+      }
+
+      .modal-content {
+        border: 2px solid white;
+        border-radius: 5px;
+        .modal-body {
+          background: $main-modal-bg-color;
+          padding: 0px 5px 5px 5px;
+        }
+        .modal-footer {
+          background: #5d3c2e;
+          border: none;
+
+          .upgradeBtn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 6px;
+            background-color: transparent !important;
+            cursor: pointer;
+            color: #fff;
+            background-image: url('/images/finals/roomDetail/lvl_up_btn_bg.png') !important;
+            background-repeat: no-repeat !important;
+            background-position: center !important;
+            background-size: cover !important;
+            width: 150px;
+            height: 43px;
+            font-family: 'Slackey';
+            line-height: 1;
+            font-weight: bolder;
+            @include button-hover-without-text;
+          }
+        }
+      }
+
+      .modal-footer {
+        button {
+          margin: 0 auto;
+          &.disabled {
+            -webkit-filter: grayscale(100%);
+            filter: grayscale(100%);
+            opacity: 1 !important;
+          }
+        }
+      }
+    }
+
+    .unlock-modal {
+      .grid-unlock-modal {
+        width: 100%;
+        display: inline-flex;
+        justify-content: space-evenly;
+
+        .text {
+          font-size: 26px;
+          letter-spacing: -2px;
+          font-weight: 300;
+          margin: 0;
+        }
+        .numberOfRooms {
+          border-radius: 100%;
+          display: inline-flex;
+          align-items: flex-end;
+
+          .img {
+            border-radius: 100%;
+            background-color: #f0aea2;
+            margin: 5px;
+            padding: 5px;
+            margin-top: -2px;
+            border: 1px solid #be351b;
+            height: fit-content;
+
+            p {
+              margin: -5px 0 0 0;
+            }
+          }
+        }
+
+        .levelOfRooms {
+          border-radius: 100%;
+          display: inline-flex;
+          align-items: flex-end;
+
+          .img {
+            border-radius: 100%;
+            background-color: #f1d6a1;
+            margin: 5px;
+            padding: 5px 6px;
+            margin-top: -2px;
+            border: 1px solid #824e18;
+            height: fit-content;
+
+            p {
+              margin: -5px 0 0 0;
+
+              .arrow {
+                max-width: 20px;
+                filter: hue-rotate(150deg);
+                transition: all 0.4s;
+              }
+            }
+          }
+        }
+      }
+      .modal-footer {
+        button {
+          margin: 0 auto;
+          &.disabled {
+            -webkit-filter: grayscale(100%);
+            filter: grayscale(100%);
+            opacity: 1 !important;
+          }
+        }
+      }
+    }
+
+    button.disabled {
+      -webkit-filter: grayscale(100%);
+      filter: grayscale(100%);
+      opacity: 1 !important;
+    }
+  }
+}

@@ -1,0 +1,43 @@
+.controlPanelView {
+    :global {
+
+        .nav.nav-tabs {
+            margin-top:15px;            
+            cursor: pointer;
+            a {
+                background-color: #bde8f7;
+                color: #3e3e3e;
+                border-bottom:0;
+                &:hover, &.active {
+                    background-color: #a3e1f7;
+                }
+            }
+        }
+
+        a {
+            &.pending {
+                &-true {
+                    background-color: #ffc10796 !important;
+                }
+            }
+
+            &.disabled-true {
+                background-color: grey !important;
+                border-color: grey !important;
+                color: #fff;
+            }
+        }
+
+        button {
+            color: #fff!important;
+            &.btn-primary,
+            &.btn-secondary {
+                &.disabled-true {
+                    background-color: grey !important;
+                    border-color: grey !important;
+                }
+
+            }
+        }
+    }
+}

@@ -1,0 +1,556 @@
+.blackSmithView {
+  :global {
+    .general-blackSmith-container {
+      display: flex;
+
+      .left {
+        padding-right: 0px;
+      }
+
+      .right {
+        padding-left: 0px;
+      }
+
+      .mainWrapper {
+        align-items: center;
+
+        .availableToolsArea {
+          border-radius: 5px;
+          border: 2px solid #3b2b25;
+          background: #634f45;
+          padding: 8px;
+        }
+
+        .discountByLvlTitle {
+          text-align: center;
+          border-radius: 5px;
+          padding: 5px;
+          color: white;
+          font-weight: bold;
+
+          @include border-image-fill-stretch('/images/finals/blacksmith/disc_header_bg.png');
+          // padding: 2px 0;
+          width: 100%;
+          justify-content: space-around;
+          display: inline-flex;
+        }
+
+        .discountByLvlsInfoZone {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          flex-wrap: wrap;
+          align-content: center;
+          align-items: flex-start;
+          border: 2px solid #7d4f31;
+          border-radius: 5px;
+
+          .verticalContainer {
+            max-height: 95px;
+            overflow: auto;
+            width: 100%;
+
+            .inside.levelRow {
+              &:nth-child(odd) {
+                background: #5c4134;
+              }
+              &:nth-child(even) {
+                background: $brown-muted;
+              }
+            }
+          }
+
+          .inside {
+            display: grid;
+            grid-template-columns: 50px repeat(5, 1fr);
+            align-items: center;
+            // padding: 4px 0;
+            height: 2rem;
+            // border-bottom: 1px solid #f5f5f5;
+
+            span {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              font-size: 16px;
+              text-align: center;
+              border-radius: 3px 0px 0px 0px;
+              padding: 5px;
+            }
+
+            &.levelRow {
+              .cell {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 8px;
+                justify-content: center;
+                align-items: center;
+
+                &.lvlCell {
+                  gap: 0px;
+                  color: white;
+                  font-weight: bold;
+                  height: 100%;
+                  background: gray;
+                  font-size: 14px;
+
+                  &.even {
+                    background: $grid-row-even-color;
+                  }
+
+                  &.odd {
+                    background: $grid-row-odd-color;
+                  }
+                }
+
+                .costData {
+                  span {
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 2px;
+                    font-size: 13px;
+                    white-space: nowrap;
+                    color: $primary-orange;
+                    font-weight: 500;
+                  }
+                }
+              }
+            }
+
+            &.header {
+              background-color: #a7744a;
+              font-weight: bold;
+              border-bottom: 2px solid #704c3d;
+              color: white;
+              border-radius: 3px;
+              width: 100%;
+              height: 100%;
+
+              .lvSpan {
+                background-color: #855a39;
+              }
+            }
+
+            &.currentLevel {
+              position: relative; // 💥 needed so ::before can anchor correctly
+              z-index: 0;
+
+              &::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 100%;
+                width: 100%;
+                background: rgba(255, 200, 100, 0.25); // 🟡 warm light overlay
+                border-radius: 4px; // match cell rounding if any
+                pointer-events: none;
+                z-index: -1; // stays behind content
+              }
+            }
+
+            @media (max-width: 1200px) {
+              &.currentLevel {
+                &::before {
+                  border-radius: 2px; // smaller rounding on mobile
+                }
+              }
+
+              &.levelRow {
+                .cell {
+                  gap: 2px; // tighter gaps
+                  flex-wrap: nowrap;
+                  justify-content: space-between;
+                  font-size: 12px;
+
+                  &.lvlCell {
+                    font-size: 12px;
+                    padding: 0px 43%;
+                    height: 100%; // allow content-based height if needed
+                  }
+
+                  .costData {
+                    span {
+                      font-size: 11px;
+                      gap: 1px;
+                    }
+                  }
+                }
+              }
+
+              &.header {
+                font-size: 13px;
+                border-width: 1px;
+
+                .lvSpan {
+                  font-size: 12px;
+                  padding: 2px 4px;
+                  height: 100%;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .picContainer {
+        text-align: center;
+        .blackSmithPic {
+          // border: 2px solid #5d845d;
+          // border-radius: 10px;
+          border-radius: 7px;
+          width: 100%;
+          // box-shadow: 11px 11px 5px -10px rgba(0, 0, 0, 0.4);
+          filter: drop-shadow(0 0 15px #7c480d) drop-shadow(0 0 0 #9b7c68ea) !important;
+          transition: filter 0.25s ease !important;
+        }
+
+         @media (max-width: 990px) {
+          .blackSmithPic {
+            width: 50%;
+          }
+        }
+
+
+        @media (max-width: 768px) {
+          .blackSmithPic {
+            width: 50%;
+          }
+        }
+      }
+
+      .roomDiscountAndLvlInfo {
+        display: flex;
+        margin-top: 10px;
+        justify-content: space-evenly;
+
+        .workShopTitle {
+          margin-bottom: 10px;
+        }
+      }
+
+      .farmingToolTopBox {
+        gap: 4px;
+        display: inline-flex;
+        flex-wrap: nowrap;
+        align-items: flex-start;
+        justify-content: end;
+        flex-direction: column;
+        width: 100%;
+
+        .tool-type {
+          height: 100%;
+          display: flex;
+          width: 100%;
+          align-items: center;
+          justify-content: flex-start;
+          border-radius: 5px;
+          background-color: $brown-light;
+
+          &:hover {
+            filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.4)) drop-shadow(0 0 0 rgba(0, 0, 0, 0)) !important;
+            transition: filter 0.4s ease !important;
+          }
+
+          .farmingTool {
+            font-size: 20px;
+            padding: 0px 0px 0px 5px;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            justify-content: space-between;
+            transition: all 0.4s;
+            // cursor: pointer;
+
+            &.disabled {
+              cursor: auto;
+              background: #685c56;
+              border-radius: 5px;
+           
+              
+            }
+
+            &:hover {
+              // background-color: #5d3c2e;
+
+              border-radius: 5px;
+
+            }
+
+            .box-info {
+              display: inline-flex;
+              align-items: center;
+              padding-left: 10px;
+
+              .toolIcon {
+                border: 1px solid #a9764e;
+                background: $brown-dark;
+                border-radius: 10px;
+
+                img {
+                  width: 50px;
+                }
+              }
+            }
+
+            .box-buy {
+              display: inline-flex;
+              align-items: center;
+              justify-content: flex-end;
+              gap: 15px;
+            }
+
+            .toolCost {
+              display: flex;
+              background: #634f45;
+              padding: 8px;
+              border-radius: 5px;
+              min-width: 120px;
+            }
+
+            .btnArea {
+              background: url('/images/finals/blacksmith/purchase_active_btn.png') no-repeat center;
+              background-size: contain;
+              border-radius: 0px 5px 5px 0px;
+              display: flex; /* to center the button inside */
+              align-items: center;
+              justify-content: center;
+              width: auto;
+
+              &.disabled {
+                background: url('/images/finals/blacksmith/purchase_inactive_btn.png') no-repeat center;
+                background-size: contain;
+              }
+            }
+
+            .buyToolButton {
+              border: 0;
+              border-radius: 0;
+              width: 44.5px;
+              height: 76px;
+              min-height: 100%;
+              background-color: transparent;
+              margin: 0px;
+              display: flex;
+              align-items: center;
+              font-size: 20px;
+              padding: 0px;
+              cursor: pointer;
+              transition: all 0.4s;
+              justify-content: center;
+
+              img {
+                width: 40px;
+              }
+            }
+
+            .text {
+              font-size: 26px;
+              letter-spacing: -2px;
+              font-weight: 300;
+              margin-left: 8px;
+            }
+            .nameDescriptionAndPriceContainer {
+              display: flex;
+              flex-direction: column;
+              padding-left: 8px;
+              .toolName {
+                font-size: 16px;
+                color: white;
+                font-weight: bold;
+              }
+
+              .toolDesc {
+                font-size: 14px;
+                color: $primary-orange;
+                max-width: 82%;
+                font-weight: 500;
+                line-height: 1.2;
+              }
+            }
+
+            .grid-upgrade-modal {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              flex-wrap: nowrap;
+              flex-direction: row;
+              gap: 15px;
+
+              .strikethrough {
+                position: relative;
+              }
+              .strikethrough:before {
+                position: absolute;
+                content: '';
+                left: 0;
+                top: 50%;
+                right: 0;
+                border-top: 1px solid red !important;
+                border-color: inherit;
+                -webkit-transform: rotate(-5deg);
+                -moz-transform: rotate(-5deg);
+                -ms-transform: rotate(-5deg);
+                -o-transform: rotate(-5deg);
+                transform: rotate(39deg);
+              }
+
+              .material-required {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                gap: 3px;
+
+                .price {
+                  margin: 0;
+                  display: inline-flex;
+                  flex-direction: column;
+                  padding-left: 2px;
+
+                  .old-price {
+                    color: $primary-orange;
+                    font-weight: 300;
+                    font-size: 14px;
+                    text-decoration: line-through;
+                    line-height: 1;
+                    // display: inline-flex;
+                    // margin-top: -25px;
+                    // margin-left: -4px;
+                  }
+
+                  .final-price {
+                    font-size: 16px;
+                    font-weight: bold;
+                    line-height: 1;
+                    color: white;
+                  }
+
+                  img {
+                    height: 20px;
+                    margin-top: 7px;
+                    margin-left: 5px;
+                  }
+                }
+
+                &.unavailable {
+                  -webkit-filter: grayscale(100%);
+                  filter: grayscale(100%);
+                  // cursor: not-allowed;
+                }
+
+                .textInsideCost {
+                  font-size: 15px;
+                  letter-spacing: -2px;
+                  font-weight: 300;
+                  color: gray;
+                }
+
+                .textInsideCostWithDiscount {
+                  font-size: 20px;
+                  letter-spacing: -2px;
+                  font-weight: 500;
+                  color: rgb(37, 105, 37);
+                }
+
+                .material-box {
+                  width: 30px;
+                  height: 30px;
+                  background-position: 60% 5%, 15% 6%;
+                  background-size: cover;
+                  //border-radius: 50%;
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  font-size: 15px;
+
+                  &.discount {
+                    background-color: $light-gold;
+                    border: 1px solid $orange-red;
+                    border-style: dashed;
+                    > span {
+                      margin-top: -3px;
+                    }
+                  }
+
+                  img {
+                    width: 30px;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .speech-wrapper {
+        padding: 0px 10px 0px 14px;
+        margin-left: -15px;
+        cursor: pointer;
+        transition: all 0.4s;
+
+        &:hover {
+          transform: translateY(-4px);
+        }
+
+        .bubble {
+          width: 310px;
+          height: auto;
+          display: block;
+          background: #f5f5f5;
+          border-radius: 4px;
+          box-shadow: 3px 5px 6px #919191;
+          position: relative;
+          margin: 0 0 25px;
+
+          .txt {
+            padding: 15px 55px 15px 14px;
+            .name {
+              font-weight: 600;
+              font-size: 15px;
+              margin: 0 0 4px;
+              color: #3498db;
+              span {
+                font-weight: normal;
+                color: #b3b3b3;
+              }
+            }
+            .message {
+              font-size: 14px;
+              margin: 0;
+              color: #2b2b2b;
+            }
+            .timestamp {
+              font-size: 11px;
+              position: absolute;
+              bottom: 8px;
+              right: 10px;
+              text-transform: uppercase;
+              color: #999;
+            }
+          }
+          .bubble-arrow {
+            position: absolute;
+            width: 0;
+            bottom: 42px;
+            left: -16px;
+            height: 0;
+          }
+          .bubble-arrow:after {
+            content: '';
+            position: absolute;
+            border: 0 solid transparent;
+            border-top: 9px solid #f5f5f5;
+            border-radius: 0 20px 0;
+            width: 15px;
+            height: 30px;
+            transform: rotate(145deg);
+          }
+          .bubble-arrow.alt:after {
+            transform: rotate(45deg) scaleY(-1);
+          }
+        }
+      }
+    }
+  }
+}

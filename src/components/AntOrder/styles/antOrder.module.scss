@@ -1,0 +1,29 @@
+.antOrder {
+    :global{
+        .orderIcon{
+            width: auto;
+            height: 2rem;
+            margin: 0.35rem;
+            border-radius: 100%;
+            cursor: pointer;
+            font-size: 1.4em;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            opacity: 0.5;
+
+            &.active{
+                //border: 3px solid black;
+                opacity: 1;
+            }
+
+            &.reverse{
+                //border: 3px solid red;
+                opacity: 1;
+                transform: rotate(180deg);
+            }
+        }
+    }
+}

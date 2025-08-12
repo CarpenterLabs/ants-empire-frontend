@@ -1,0 +1,128 @@
+.expeRewardModal {
+  :global {
+    max-width: 1000px;
+
+    .expeRewardInfoZone {
+      width: 100%;
+      @include border-image-fill-stretch('/images/finals/expedition/Reward/reward_stats_bg.png');
+      justify-content: space-between;
+      display: inline-flex;
+      padding: 15px 1rem;
+
+      .subtitle,
+      .currentWins {
+        color: white;
+        font-weight: bolder;
+        min-width: auto;
+
+        .big {
+          display: inline-flex;
+
+          @media (max-width: 1200px) {
+            display: block;
+          }
+
+          @media (max-width: 992px) {
+            display: block;
+          }
+
+          @media (max-width: 768px) {
+            display: none;
+          }
+        }
+
+        .small {
+          display: none;
+
+          @media (max-width: 1200px) {
+            display: none;
+          }
+
+          @media (max-width: 992px) {
+            display: none;
+          }
+
+          @media (max-width: 768px) {
+            display: block;
+          }
+        }
+
+        // img{
+        //   width: 25px;
+        // }
+
+        .yw {
+          color: $primary-orange;
+          padding: 0px 5px;
+        }
+      }
+
+      // Responsive overrides
+      @media (max-width: 1400px) {
+      }
+
+      @media (max-width: 1200px) {
+        font-size: 16px;
+      }
+
+      @media (max-width: 992px) {
+        font-size: 16px;
+        padding: 15px 5px;
+        .subtitle {
+          padding-left: 10px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        font-size: small;
+        padding: 10px 5px;
+
+        .currentWins {
+        }
+      }
+    }
+
+    .modal-title {
+      width: 100% !important;
+    }
+
+    .listAvailableRewards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 16px;
+      width: 100%;
+      justify-content: center;
+      padding: 8px;
+
+      > div {
+        max-width: 310px;
+        margin: 0 auto; // center each card horizontally if needed
+
+        .mystery-img-box img {
+          max-width: 100%; // full width of the container
+          height: auto;
+          display: block;
+        }
+      }
+    }
+
+    .modal-content {
+      border: 2px solid white;
+
+      .modal-body {
+        background-color: $main-modal-bg-color;
+        padding: 0 5px;
+      }
+    }
+  }
+}
+
+.expeRewardModalHeader {
+  :global {
+    .expeRewardTitleZone {
+      // display: flex;
+      // justify-content: space-between;
+      // padding: 0px 4rem 0px 0px;
+    }
+  }
+}

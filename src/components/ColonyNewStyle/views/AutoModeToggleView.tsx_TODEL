@@ -1,0 +1,111 @@
+import React, { useEffect, useRef } from 'react';
+import { DateTime } from 'luxon';
+
+export type LightMode = 'morning' | 'midday' | 'night';
+
+type AutoModeToggleProps = {
+  /** Fires when we cross a mode boundary (optional) */
+  onModeChange?: (mode: LightMode) => void;
+  /** Log mode + progress to console (default: true) */
+  debug?: boolean;
+};
+
+// ──────────────────────────────────────────────────────────────
+// Day‑cycle schedule (24‑hour clock)
+// Note: 29 == 05 + 24, lets us treat early‑AM hours as 29‑ish.
+// ──────────────────────────────────────────────────────────────
+const modeRanges: Record<LightMode, [number, number]> = {
+  morning: [5, 12], // 05 – 11
+  midday: [12, 20], // 12 – 19:59
+  night: [20, 29], // 20 – 04:59 next day
+};
+
+/** Determine which mode a DateTime falls into. */
+function getMode(now: DateTime): LightMode {
+  const h = now.hour < 5 ? now.hour + 24 : now.hour; // shift 0‑4 to 24‑28
+  if (h < modeRanges.morning[1]) return 'morning';
+  if (h < modeRanges.midday[1]) return 'midday';
+  return 'night';
+}
+
+function getNightFadeOut(now: DateTime): number {
+  // Time in minutes from midnight
+  let min = now.hour * 60 + now.minute;
+
+  // Shift 0–4 AM into 24–28h range for continuity
+  if (min < 330) min += 1440; // 330 = 05:30
+
+  // Fade starts at 04:30 (270+1440 = 1710) and ends at 05:30 (330+1440 = 1770)
+  const start = 1650; // 04:30
+  const end = 1710; // 05:30
+  if (min < start) return 1; // full night
+  if (min > end) return 0; // done fading
+  return 1 - (min - start) / (end - start); // linear fade-out
+}
+
+/** Linear progress 0–1 through the current mode window. */
+function getProgress(now: DateTime, mode: LightMode): number {
+  const t = now.hour < 5 ? now.plus({ hours: 24 }) : now; // 00‑04 ⇒ 24‑28
+  const [startH, endH] = modeRanges[mode];
+
+  const start = t.set({ hour: startH % 24, minute: 0, second: 0, millisecond: 0 });
+  let end = t.set({ hour: endH % 24, minute: 0, second: 0, millisecond: 0 });
+  if (endH > 24) end = end.plus({ days: 1 });
+
+  const total = end.diff(start).as('milliseconds');
+  const elapsed = t.diff(start).as('milliseconds');
+  return Math.min(1, Math.max(0, elapsed / total));
+}
+
+/** Bell‑curve intensity (0 → 1 → 0) peaking at mid‑interval. */
+const bellCurve = (p: number) => 1 - Math.abs(p - 0.5) * 2;
+
+/**
+ * AutoModeToggle
+ * Adds `morning|midday|night` class to <html> and exposes:
+ *   --lightModeProgress  (linear 0–1)
+ *   --lightIntensity     (bell  0→1→0)
+ * Polls every 5 s. No React state, no re‑render loops.
+ */
+const AutoModeToggle: React.FC<AutoModeToggleProps> = ({ onModeChange, debug = true }) => {
+  const lastModeRef = useRef<LightMode>(getMode(DateTime.local()));
+
+  useEffect(() => {
+    const tick = () => {
+      const now = DateTime.local();
+      const mode = getMode(now);
+      const prog = getProgress(now, mode);
+      const inten = bellCurve(prog);
+
+      // Callback once per boundary cross
+      if (mode !== lastModeRef.current) {
+        lastModeRef.current = mode;
+        onModeChange?.(mode);
+      }
+
+      // Update root classes + CSS custom properties
+      const root = document.documentElement;
+      root.classList.remove('morning', 'midday', 'night');
+      root.classList.add(mode);
+      root.style.setProperty('--lightModeProgress', prog.toFixed(3));
+      root.style.setProperty('--lightIntensity', inten.toFixed(3));
+
+      const fadeOut = getNightFadeOut(now);
+      root.style.setProperty('--nightFadeOut', fadeOut.toFixed(3));
+
+      if (debug) {
+        console.info(
+          `[AutoModeToggle] ${now.toFormat('HH:mm')}  mode=${mode}  progress=${prog.toFixed(3)}  intensity=${inten.toFixed(3)}`
+        );
+      }
+    };
+
+    tick(); // immediate
+    const id = window.setInterval(tick, 5000); // every 5 s
+    return () => clearInterval(id);
+  }, [onModeChange, debug]);
+
+  return null; // nothing to render
+};
+
+export default AutoModeToggle;

@@ -1,0 +1,28 @@
+// --------------------------------------------------------------------------------
+// Estilos globales y resets: normalización de márgenes, tipografía base, etc.
+// Se carga antes que todo lo demás para garantizar un punto de partida limpio.
+// --------------------------------------------------------------------------------
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 100%;  // 16px base
+}
+
+body {
+  font-family: $font-stack;
+  line-height: 1.5;
+  color: $primary-color;
+  background-color: #fdfdfd;
+}
+
+// Ejemplo de estilo base para encabezados:
+// h1, h2, h3 {
+//   font-weight: bold;
+// }

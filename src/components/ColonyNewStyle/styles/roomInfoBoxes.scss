@@ -1,0 +1,395 @@
+:global {
+  .room-info-box {
+    z-index: 2;
+    /* ──────── BASE ──────── */
+    @include border-image-fill-stretch('/images/finals/info_panel1.png');
+    padding-top: 1rem;
+    scale: 0.7;
+    min-width: 192px;
+
+    /* Efectos base */
+    transition: filter 0.3s ease, transform 0.3s ease;
+    filter: drop-shadow(0 0 12px rgba(0, 0, 0, 0.8)) drop-shadow(0 0 20px rgba(0, 0, 0, 0.7))
+      drop-shadow(0 0 6px rgba(0, 0, 0, 0.8));
+
+    /* ──────── ESTADO BASE ::after ──────── */
+    .inside-secondary-box {
+      position: relative;
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(255, 215, 0, 0.3);
+        mix-blend-mode: overlay;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+    }
+
+    /* ──────── HOVER SOLO SI NO ESTÁ INACTIVA ──────── */
+    &:not(:has(.seller-inactive)):hover {
+      filter: drop-shadow(0 0 15px rgba(0, 0, 0, 0.8)) drop-shadow(0 0 25px rgba(0, 0, 0, 0.6))
+        drop-shadow(0 0 8px rgba(0, 0, 0, 0.8));
+      transform: scale(1.05);
+
+      .inside-secondary-box::after {
+        opacity: 1;
+      }
+    }
+
+    .seller-inactive {
+      .inside-secondary-box {
+        cursor: not-allowed;
+      }
+    }
+
+    /* ──────── LAYOUT CONTAINERS ──────── */
+    .infobox {
+      width: 100%;
+    }
+
+    .main-box {
+      text-align: center;
+    }
+
+    .inside-secondary-box {
+      position: relative; // Necesario para el positioning del ::after
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(255, 215, 0, 0.3);
+        mix-blend-mode: overlay;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+    }
+
+    /* ──────── ROOM VARIANTS ──────── */
+    &.room- {
+      &5,
+      &6,
+      &9 {
+        @include border-image-fill-stretch('/images/finals/info_panel2.png');
+      }
+
+      &4 {
+        @include border-image-fill-stretch('/images/finals/info_panel2.png');
+        padding-bottom: 1rem;
+
+        .infobox.id-4 {
+          max-height: 70px;
+
+          .main-box {
+            padding-top: 7px;
+          }
+        }
+
+        .inside-secondary-box {
+          height: 36px;
+          margin-top: 13px;
+        }
+      }
+    }
+
+    /* ──────── TYPOGRAPHY ──────── */
+    p {
+      margin: 0;
+    }
+
+    .main-box {
+      .room-name {
+        font-family: 'Slackey';
+        color: white;
+        font-size: 16px;
+        text-align: center;
+        text-transform: uppercase;
+        font-weight: bolder;
+      }
+
+      .number-ants {
+        display: inline-flex;
+        justify-content: center;
+        width: 100%;
+        align-items: center;
+        margin-top: 5px;
+        img {
+          max-width: 18px;
+          margin-right: 5px;
+          margin-top: -5px;
+        }
+
+        .current {
+          color: #fbd372;
+        }
+        .max {
+          color: white;
+        }
+      }
+
+      .power-ants {
+        display: inline-flex;
+        justify-content: center;
+        width: 100%;
+        align-items: center;
+
+        p {
+          color: white;
+          margin: 0;
+          margin-right: 10px;
+        }
+
+        .current {
+          color: #fbd372;
+        }
+        .max {
+          color: white;
+        }
+      }
+    }
+
+    .secondary-box {
+      min-height: 50px;
+      position: relative;
+      cursor: pointer;
+
+      .inside-secondary-box {
+        max-width: 95%;
+        position: absolute;
+        left: 2%;
+
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        gap: 0.2rem;
+        padding: 10px;
+        .lv {
+          color: white;
+        }
+
+        .lv-num {
+          color: #fbd372;
+          font-weight: 700;
+        }
+
+        img {
+          max-width: 1rem;
+          margin-top: -8px;
+          margin-left: 5px;
+        }
+      }
+    }
+
+    /* ──────── SPECIFIC ROOM CONTENT ──────── */
+    .warehouse-info {
+      margin-top: 5px;
+      margin-bottom: 5px;
+      display: inline-flex;
+      align-items: center;
+
+      img {
+        max-width: 25px;
+        margin-top: -6px;
+        margin-right: 5px;
+      }
+
+      .current {
+        color: #fbd372;
+      }
+      .max {
+        color: white;
+      }
+    }
+
+    .hospital-info {
+      margin-top: 5px;
+      margin-bottom: 5px;
+      display: inline-flex;
+      align-items: center;
+
+      img {
+        max-width: 25px;
+        margin-top: -4px;
+        margin-right: 5px;
+      }
+
+      .current-pool {
+        color: white;
+      }
+    }
+
+    .seller {
+      min-height: fit-content;
+
+      .seller-info {
+        color: $primary-orange;
+        text-align: center;
+        margin-top: 5px;
+      }
+
+      .secondary-box {
+        .inside-secondary-box {
+          .cooldown {
+            font-weight: 700;
+            color: white;
+            margin: 0;
+          }
+          &.premium-call-box {
+            padding: 4px;
+
+            img {
+              max-width: 3rem;
+              margin-top: -9px;
+            }
+          }
+
+          .premium-call {
+            display: inline-flex;
+            align-items: center;
+            justify-content: space-evenly;
+            width: 100%;
+
+            .nectar-cost {
+              color: $primary-orange;
+              font-weight: 700;
+              width: 100%;
+              display: inline-flex;
+              align-items: center;
+              justify-content: center;
+
+              // img {
+              //   max-width: 3rem;
+              //   margin-right: -7px;
+              //   margin-top: -16px;
+              // }
+            }
+
+            .hours {
+              color: $primary-orange;
+            }
+
+            .minutes {
+              color: $primary-orange;
+              margin-left: 5px;
+            }
+          }
+
+          img {
+            max-width: 1.5rem;
+            margin-top: -3px;
+          }
+        }
+      }
+    }
+
+    /* ──────── POSITIONING & RESPONSIVE ──────── */
+    /* Usar los valores base del JavaScript */
+    &.info-box-left {
+      left: var(--base-left, -1%);
+    }
+    &.info-box-right {
+      right: var(--base-right, -1%);
+    }
+
+    /* 1) Pantallas pequeñas – hasta 1399px (pegado al borde) */
+    @container colony-container (max-width: 1399px) {
+      &.info-box-left {
+        left: -1% !important;
+      }
+      &.info-box-right {
+        right: 0 !important;
+      }
+    }
+
+    /* 2) Escala intermedia – hasta 1440px */
+    @container colony-container (max-width: 1440px) {
+      scale: 0.5;
+
+      &.info-box-left {
+        left: -3% !important;
+      }
+      &.info-box-right {
+        right: -2.5% !important;
+      }
+    }
+
+    /* 3) Escala más pequeña – hasta 1024px */
+    @container colony-container (max-width: 1024px) {
+      scale: 0.45;
+
+      &.info-box-left {
+        left: -5% !important;
+        top: calc(var(--base-top, 50%) - 5%) !important;
+      }
+      &.info-box-right {
+        right: -4% !important;
+        top: calc(var(--base-top, 50%) - 5%) !important;
+      }
+    }
+
+    /* 4) Escala mínima – hasta 768px */
+    @container colony-container (max-width: 768px) {
+      scale: 0.4;
+
+      &.info-box-left {
+        left: -7% !important;
+        top: calc(var(--base-top, 50%) - 8%) !important;
+      }
+      &.info-box-right {
+        right: -6% !important;
+        top: calc(var(--base-top, 50%) - 8%) !important;
+      }
+    }
+
+    /* 5) Rango intermedio sin escala – 1441px a 1600px */
+    @container colony-container (min-width: 1441px) and (max-width: 1600px) {
+      &.info-box-left {
+        left: -1% !important;
+      }
+      &.info-box-right {
+        right: -1.5% !important;
+      }
+    }
+
+    /* 6) Pantallas medianas originales – 1601px a 1800px */
+    @container colony-container (min-width: 1601px) and (max-width: 1800px) {
+      &.info-box-left {
+        left: calc(var(--base-left, -1%) + -6%) !important;
+      }
+      &.info-box-right {
+        right: calc(var(--base-right, -1%) + -6%) !important;
+      }
+    }
+
+    /* 7) Pantallas grandes – desde 1801px (pegado al borde) */
+    @container colony-container (min-width: 1801px) {
+      &.info-box-left {
+        left: -1% !important;
+      }
+      &.info-box-right {
+        right: -1% !important;
+      }
+    }
+
+    @media (max-width: 767px) {
+      &.mobile-infobox {
+        z-index: 9;
+        position: absolute;
+        bottom: var(--base-bottom, -6%);
+        right: var(--base-right, -2%);
+        scale: 0.7;
+        filter: none;
+      }
+    }
+  }
+}

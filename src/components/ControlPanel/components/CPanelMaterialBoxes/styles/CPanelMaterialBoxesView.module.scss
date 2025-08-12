@@ -1,0 +1,37 @@
+.CPanelMaterialBoxesView {
+  margin-top: 15px;
+  :global {
+    .materialBoxes-region {
+      display: flex;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 25px;
+      align-items: center;
+
+      .button-undo {
+        width: 37px;
+        height: 37px;
+        background-color: #7bc3cf;
+        padding: 6px;
+        border-radius: 15%;
+        cursor: pointer;
+
+        &.disabled {
+          background-color: grey !important;
+          border-color: grey !important;
+          pointer-events: none;
+          opacity: 0.65;
+        }
+      }
+    }
+
+    .gridMaterialBoxes {
+      margin: 30px 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, 370px);
+      justify-content: center;
+      gap: 20px;
+    }
+  }
+}

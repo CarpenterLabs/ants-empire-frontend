@@ -1,0 +1,182 @@
+.antFilterView {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    
+    @media (max-width: 500px){
+        display: block;
+    }
+
+    :global{
+        .filterTypes {
+            margin-right: 1.5rem;
+
+            @media (max-width: 1439px){
+                display: flex;
+            }
+            @media (max-width: 500px){
+                margin-right: 0;
+            }
+
+            .type {
+                cursor: pointer;
+                width: 2rem;
+                height: 2rem;
+                margin: 0.35rem;            
+                transition: all 0.15s ease-in-out;  
+
+                @media (max-width: 1439px){
+                    margin: 0.35rem;
+                }
+                
+                @media (max-width: 500px){
+                    width: 2.2rem;
+                    height: 2.2rem;
+                }
+
+                outline: 1.5px solid black;
+                border-radius: 100%;
+
+                &.worker{
+                    background-color: #ffa41d82;
+                }
+                &.soldier{
+                    background-color: #ff471d82;
+                }
+                &.flying{
+                    background-color: #feabff82;
+                }
+
+                &.disabled {
+                    outline: none;                
+                }
+
+                &:hover{                
+                    outline:1.5px solid black;
+                }
+            }
+        }
+
+        .filterSpecies {
+            display: flex;
+            margin-right: 1.5rem;
+
+            @media (max-width: 1439px){
+                display: flex;
+                max-width: 100%;
+                flex-wrap: wrap;
+            }  
+
+            @media (max-width: 500px){
+                margin-right: 0;
+            }
+
+            .species {
+                width: 2rem;
+                height: 2rem;
+                margin: 0.35rem;
+                outline: 1.5px solid black;
+                border-radius: 100%;
+                cursor: pointer;
+                transition: all 0.15s ease-in-out;  
+
+                @media (max-width: 1439px){
+                    margin: 0.35rem;
+                }
+
+                @media (max-width: 500px){
+                    width: 2.2rem;
+                    height: 2.2rem;
+                }
+
+                &.blue {
+                    background-color: #49acfb80;
+                }
+
+                &.red {
+                    background-color: #f5785ab8;
+                }
+
+                &.white {
+                    background-color: #f8922c9e;
+                }
+
+                &.green {
+                    background-color: #85b92773;
+                }
+
+                &.yellow {
+                    background-color: #eb79fc5e;
+                }
+
+                &.disabled {
+                    outline: none;                
+                }
+
+                &:hover{                
+                    outline:1.5px solid black;
+                }
+            }
+        }
+
+        .filterRarity {
+            display: flex;
+            margin-right: 1.5rem;
+
+            @media (max-width: 500px){
+                margin-right: 0;
+            }
+
+            .rarity {
+                width: 2rem;
+                height: 2rem;
+                margin: 0.35rem;
+                outline: 1.5px solid black;
+                border-radius: 100%;
+                cursor: pointer;
+                font-size: 1.4em;
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                transition: all 0.15s ease-in-out;  
+                font-size: 20px;
+
+                @media (max-width: 1439px){
+                    margin: 0.35rem;
+                }
+
+                @media (max-width: 500px){
+                    width: 2.2rem;
+                    height: 2.2rem;
+                    font-size: 1em;
+                }
+
+                &.common {
+                    background-color: #00ff0824;
+                }
+
+                &.rare {
+                    background-color: #0072ff24;
+                }
+
+                &.epic {
+                    background-color: #bd4bf74a;
+                }
+
+                &.legendary {
+                    background-color: #ffd700cc;
+                }
+
+                &.disabled {
+                    outline: none;                
+                }
+
+                &:hover{                
+                    outline: 1.5px solid black;
+                }
+            }
+        }
+    }
+}

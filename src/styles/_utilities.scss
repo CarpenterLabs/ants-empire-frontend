@@ -1,0 +1,14 @@
+// --------------------------------------------------------------------------------
+// Clases utilitarias para ajustes rápidos: márgenes, paddings, display, texto, etc.
+// Usar con moderación para no ensuciar demasiado el HTML.
+// --------------------------------------------------------------------------------
+
+.mt-1 { margin-top:  $base-spacing !important; }
+.mb-2 { margin-bottom: $base-spacing * 2 !important; }
+.px-1 { padding-left:  $base-spacing !important; padding-right: $base-spacing !important; }
+
+.text-center { text-align: center !important; }
+.d-flex      { display: flex !important; }
+
+// Ejemplo de uso:
+// <div class="mt-1 text-center">Este elemento tiene margen superior y texto centrado</div>

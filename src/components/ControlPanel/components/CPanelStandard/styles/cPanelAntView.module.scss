@@ -1,0 +1,50 @@
+.cPanelAntView {
+    margin-top:15px;
+    :global {
+        display: inline-flex;
+        width: 100%;
+
+        .percentage {
+            // border-right: 1px solid #808080;
+
+            @media (max-width: 1199px) {
+                border: 0;
+            }
+        }
+
+        .simulation {
+            
+            @media (max-width: 1199px) {
+                border-top: 1px solid grey;
+                margin: 25px 0;
+                padding-top: 25px;
+
+            }
+
+            .title {
+                align-items: center;
+                display: inline-flex;
+                height: 35px;
+                margin: 0;
+            }
+        }
+
+        .row {
+            width: 100%;          
+
+        }
+
+        .htop {
+            display: inline-flex;
+            justify-content: space-between;
+        }
+
+        button {
+            color: #fff;
+            font-weight: 400;
+            &:hover {
+                color: #fff;
+            }
+        }
+    }
+}

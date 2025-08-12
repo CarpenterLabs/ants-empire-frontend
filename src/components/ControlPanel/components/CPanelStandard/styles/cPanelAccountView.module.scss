@@ -1,0 +1,30 @@
+.cPanelAccountView {
+  margin-top: 15px;
+  :global {
+    .table-header {
+      display: inline-flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .title {
+        align-items: center;
+        display: inline-flex;
+        height: 35px;
+        margin: 0;
+      }
+
+      .table-buttons {
+        // width: 40%;
+        button {
+          margin-left: 15px;
+          color: #fff;
+          font-weight: 400;
+        }
+      }
+    }
+
+    input {
+      width: 12.5rem;
+    }
+  }
+}

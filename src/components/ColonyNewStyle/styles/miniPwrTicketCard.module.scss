@@ -1,0 +1,64 @@
+.miniPowerTicketCard {
+  width: 160px;
+  transition: all 0.4s;
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 10px -10px rgb(0 0 0 / 50%);
+  }
+
+  :global {
+    .card {
+      background-color: #282c2f;
+      border: 2px solid white;
+      border-radius: 5px;
+      padding: 3px;
+      height: 200px;
+      display: flex;
+      justify-content: space-between;
+      cursor: pointer;
+
+      .headerInfo {
+        display: inline-flex;
+        justify-content: center;
+
+        .power {
+          color: white;
+          font-size: 25px;
+          font-weight: bolder;
+          padding-left: 10px;
+          margin-bottom: 0;
+          margin-top: -5px;
+
+          .pwticketicon {
+            width: 30px;
+          }
+        }
+
+        .price {
+          margin: 10px 8px 0 0;
+        }
+      }
+    }
+
+    .bottom {
+      background-image: url('/images/finals/tavern/delivery_btn_bg.png');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 100% 100%;
+
+      .smallTxt {
+        text-align: center;
+        margin: 0;
+        font-size: 14px;
+        color: white;
+        font-weight: bolder;
+        padding: 5px 0 0 0;
+      }
+    }
+
+    .card-img {
+      width: 80%;
+      margin: 0 auto;
+    }
+  }
+}

@@ -1,0 +1,22 @@
+.shopView {
+  :global {
+    .title {
+      width: 100%;
+      text-align: center;
+
+      span {
+        color: white;
+        font-family: 'Slackey';
+        font-weight: bolder;
+        font-size: 2rem;
+      }
+    }
+    .shopList {
+      margin: 10px 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, 300px);
+      justify-content: center;
+      gap: 10px;
+    }
+  }
+}

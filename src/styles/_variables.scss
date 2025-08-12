@@ -1,0 +1,52 @@
+// variables.scss
+
+// Colors
+$primary-color: #1e3547;
+$secondary-color: #2ecc71;
+$primary-orange: #ffd774;
+$white: #ffffff;
+$brown-dark: #3f2e27;
+$brown-medium: #634f45;
+$brown-light: #776155;
+$brown-muted: #714d3d;
+$gray-dark: #50372d;
+$gold-border: #c28e43;
+$gold-light: #fcd472;
+$yellow-light: #ffdd77;
+$orange-danger: #ff6049;
+$medium-brown: #634e44;
+$light-brown: #8d7364;
+$medium-gray: #787878;
+$golden-yellow: #f6ce65;
+$orange-red: #f3602f;
+$light-gold: #ffd679bd;
+$dark-brown: #925b34;
+$light-red: #ff00002b;
+$olive-brown: #5b5545;
+$charcoal-brown: #464133;
+$warm-yellow: #877547;
+
+// Typography
+$font-stack: 'Oxanium', sans-serif;
+
+// Spacing
+$base-spacing: 1rem;
+
+// Scale
+$scaleUIColony: 0.8;
+
+// ===========================
+// BREAKPOINTS VARIABLES
+// ===========================
+
+$mobile-breakpoint: 428px;
+$tablet-breakpoint: 768px;
+$desktop-breakpoint: 1024px;
+$tablet-large: 992px;
+$desktop-large: 1200px;
+$desktop-xl: 1440px;
+
+// Modals
+$main-modal-bg-color: #5d3c2e;
+$grid-row-even-color: #5a3c2f;
+$grid-row-odd-color: #493228;

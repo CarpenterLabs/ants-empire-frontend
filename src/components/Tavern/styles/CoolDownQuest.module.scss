@@ -1,0 +1,14 @@
+.coolDownQuest {
+    :global {
+        .coolDownContent{
+            text-align: center;
+            p{
+                font-size: 15px;
+                color: $primary-orange;
+                font-weight: bolder;
+                margin-top: -3px 0 0 0;
+                margin-bottom: 0;
+            }
+        }
+    }
+}

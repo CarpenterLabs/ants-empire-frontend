@@ -1,0 +1,254 @@
+@import './lightModes.module.scss';
+@import './lightingEffects.scss';
+@import './roomInfoBoxes.scss';
+
+/* ──────── CONTAINER PRINCIPAL ──────────────────────── */
+.colonyView {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background: #000;
+  overflow: hidden;
+}
+
+:global {
+  /* ──────── CONTAINER DE LA COLONIA ──────────────────── */
+  .content-colony {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* ──────── BOTONES DE MODO ──────────────────────────── */
+    .modeToggle {
+      position: absolute;
+      top: 60px;
+      right: 7%;
+      display: flex;
+      gap: 8px;
+      z-index: 10;
+      background: rgba(0, 0, 0, 0.4);
+      border-radius: 1rem;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      padding: 5px;
+
+      button {
+        width: 36px;
+        height: 36px;
+        padding: 0;
+        border: none;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.2);
+        color: #fff;
+        font-size: 16px;
+        cursor: pointer;
+        backdrop-filter: blur(4px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.25s ease;
+
+        &:hover {
+          background: rgba(255, 255, 255, 0.3);
+        }
+
+        &.selected {
+          background: rgba(255, 255, 255, 0.9);
+          color: #333;
+          box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+          transform: scale(1.05);
+        }
+
+        &.auto-active {
+          background: rgba(138, 206, 255, 0.4);
+          color: #fff;
+          box-shadow: 0 0 10px rgba(138, 206, 255, 0.8);
+          border: 2px solid rgba(138, 206, 255, 0.6);
+          animation: pulseActive 2s ease-in-out infinite;
+        }
+      }
+
+      @container colony-container (max-width: 1399px) {
+        right: 0 !important;
+        top: 60px !important;
+      }
+
+      @container colony-container (max-width: 1440px) {
+        scale: 0.85;
+        right: 0% !important;
+        top: 1%;
+      }
+
+      @container colony-container (max-width: 1024px) {
+        scale: 0.65;
+        right: -2% !important;
+        top: 0%;
+      }
+
+      @container colony-container (max-width: 768px) {
+        scale: 0.5;
+        right: -4.5% !important;
+        top: 0;
+      }
+
+      @container colony-container (min-width: 1441px) and (max-width: 1600px) {
+        scale: 1;
+        right: 0% !important;
+        top: 1%;
+        margin-top: 60px !important;
+      }
+
+      @container colony-container (min-width: 1601px) and (max-width: 1800px) {
+        scale: 1;
+        right: -4% !important;
+      }
+
+      @container colony-container (min-width: 1801px) {
+        scale: 1;
+        right: 0.5% !important;
+        top: 1.5%;
+      }
+    }
+  }
+
+  /* ──────── CONTAINER DE LA IMAGEN (mantiene proporciones 16:9) ──────────────────── */
+  .image-container {
+    position: absolute;
+    top: 0;
+    // position: relative;
+
+    /* Container que mantiene las proporciones 16:9 para el posicionamiento correcto */
+    width: min(100vw, calc(100vh * 16 / 9));
+    height: min(100vh, calc(100vw * 9 / 16));
+
+    /* Container query para las infoboxes */
+    container-type: inline-size;
+    container-name: colony-container;
+  }
+
+  /* La imagen extendida que desborda para cubrir barras negras */
+  .colony-background {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    /* La imagen mantiene su tamaño real y se desborda cuando es necesario */
+    height: 100%;
+    width: auto;
+    /* Asegurar que cubra el ancho del container como mínimo */
+    min-width: 100%;
+
+    /* Centrar la imagen */
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    display: block;
+    /* Renderizado nítido */
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+
+  /* ──────── HABITACIONES ─────────────────────────────── */
+  .room {
+    z-index: 1;
+    position: absolute;
+    cursor: pointer;
+    /* Forzar posicionamiento en píxeles enteros para nitidez */
+    transform: translateZ(0);
+
+    transition: filter 0.25s ease !important;
+    filter: drop-shadow(0 0 0 transparent);
+
+    &:not(.seller-inactive):not([data-room-id='7']):hover {
+      filter: drop-shadow(0 0 5px #dce0e2) drop-shadow(0 0 0 #dce0e2) !important;
+      transition: filter 0.25s ease !important;
+    }
+
+    &[data-room-id='7'], &.seller-inactive {
+      cursor: auto;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      pointer-events: none;
+
+      /* Renderizado nítido de las imágenes de las rooms */
+      /* Asegurar posicionamiento exacto */
+      /* GPU acceleration para mejor renderizado */
+
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: crisp-edges;
+      display: block;
+      transform: translateZ(0);
+    }
+  }
+
+  .mobile {
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    @media (max-width: 767px) {
+      padding-bottom: 92px;
+      box-sizing: border-box;
+    }
+    .fullscreen-pattern {
+      background-image: url('/images/finals/patternGoodFinal2.png');
+      background-repeat: repeat;
+      background-size: 40%;
+      background-position: top left;
+
+      width: 100%;
+      min-height: 100vh;
+
+      display: flex;
+      flex-direction: column;
+    }
+
+    .room-list-vertical {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .room {
+        margin: 15px 0;
+
+        filter: drop-shadow(0 -4px 4px rgba(0, 0, 0, 0.5)) drop-shadow(-3px 0 4px rgba(0, 0, 0, 0.4))
+          drop-shadow(3px 0 4px rgba(0, 0, 0, 0.4)) drop-shadow(0 1px 1px rgba(0, 0, 0, 0.1)) !important;
+        transform: none !important;
+
+        &[data-room-id='10'] {
+          max-width: none;
+          margin: 0;
+        }
+
+        &[data-room-id='8'] {
+          margin-top: -30px;
+        }
+
+        &:hover {
+          filter: drop-shadow(0 -4px 4px rgba(0, 0, 0, 0.5)) drop-shadow(-3px 0 4px rgba(0, 0, 0, 0.4))
+            drop-shadow(3px 0 4px rgba(0, 0, 0, 0.4)) drop-shadow(0 1px 1px rgba(0, 0, 0, 0.1)) !important;
+          transform: none !important;
+        }
+      }
+    }
+  }
+}
+
+/* ──────── ANIMACIONES DE UI ─────────────────────────── */
+@keyframes pulseActive {
+  0%,
+  100% {
+    box-shadow: 0 0 10px rgba(138, 206, 255, 0.8);
+    border-color: rgba(138, 206, 255, 0.6);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(138, 206, 255, 1);
+    border-color: rgba(138, 206, 255, 0.9);
+  }
+}

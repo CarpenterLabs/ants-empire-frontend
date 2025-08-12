@@ -1,0 +1,96 @@
+.wareHouseModalMain {
+  :global {
+    background-color: $main-modal-bg-color;
+    // display: inline-flex;
+    width: 100%;
+
+    .cardGrid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, 170px);
+
+      gap: 1rem;
+      background: $brown-muted;
+      padding: 5px;
+      border-radius: 10px;
+      border: 1px solid #875430;
+      justify-content: center;
+    }
+
+    .cardSlot {
+      //   aspect-ratio: 3 / 4;
+      // background-color: #1c1c1c;
+      border-radius: 8px;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &.withAnt {
+        background: #91c49d;
+      }
+
+      .cardButtons {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+
+        .detailBtn {
+          background-color: #f8a62b;
+        }
+
+        .removeBtn {
+          background-color: #da4242;
+        }
+
+        button {
+          color: #fff;
+          border: none;
+          padding: 0.25rem 0.5rem;
+          border-radius: 4px;
+          font-size: 0.75rem;
+          cursor: pointer;
+        }
+      }
+
+      .emptySlot {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &.canAdd {
+          background-color: #432b20;
+          border: 1px solid #9a6034;
+          border-radius: 8px;
+          cursor: pointer;
+        }
+
+        img {
+          &.blockedimg {
+            width: 100%;
+            height: 100%;
+          }
+
+          &.addimg {
+            width: 80px;
+            height: 80px;
+          }
+          // opacity: 0.5;
+        }
+      }
+    }
+  }
+}
+
+.wareHouseModalFull {
+  :global {
+    .modal-content {
+      background-color: $main-modal-bg-color;
+      border: 2px solid white;
+    }
+  }
+}

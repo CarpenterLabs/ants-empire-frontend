@@ -1,0 +1,39 @@
+.tablePercentage {
+    :global {
+        th {
+            text-transform: capitalize;
+            @media (max-width: 400px) {
+                font-size:14px;
+            }
+        }
+
+        td {
+            cursor: pointer;
+
+            @media (max-width: 400px) {
+                font-size:14px;
+            }
+
+            &:hover {
+                background-color: #b5e4f5;
+                transition: 0.3s;
+            }
+
+            &.total {
+                font-weight: 600;
+                transition: 0.3s;
+                &.true {
+                    background-color: #00ff0824;
+                }
+                &.false {
+                    background-color: #f6362394;
+                }
+            }
+        }
+
+        input {
+            max-width: 60px;
+            max-height: 25px;
+        }
+    }
+}

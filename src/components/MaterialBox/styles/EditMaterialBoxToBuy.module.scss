@@ -1,0 +1,279 @@
+.shopCardItem {
+  :global {
+    // max-width: 85%;
+    .wsk-cp-product {
+      &.unavailable {
+        -webkit-filter: grayscale(100%);
+        filter: grayscale(100%);
+        box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+        pointer-events: none;
+      }
+
+      &.currentlyEditingCard {
+        -webkit-box-shadow: 0px 0px 17px 4px rgba(89, 88, 89, 0.4);
+        -moz-box-shadow: 0px 0px 17px 4px rgba(89, 88, 89, 0.4);
+        box-shadow: 0px 0px 17px 4px rgba(89, 88, 89, 0.4);
+      }
+
+      .minibtn {
+        width: 30px;
+        height: 30px;
+        right: 0;
+        position: absolute;
+        z-index: 99;
+
+        &.update {
+          left: -8px;
+          top: -8px;
+        }
+
+        &.duplicate {
+          right: 45px;
+          background-color: #f7f7f9;
+          border: 1px solid black;
+          padding: 2px;
+        }
+
+        &.undo {
+          background-color: #17a2b885;
+          border: 1px solid black;
+          padding: 2px;
+          pointer-events: all;
+          margin-right: 10px;
+        }
+
+        &.close {
+          background-color: #dc3545bf;
+          margin-right: 10px;
+        }
+      }
+
+      cursor: pointer;
+      background-color: #fff;
+      padding: 15px;
+      border-radius: 6px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+      position: relative;
+      margin: 20px auto;
+
+      input {
+        border: unset;
+        border-bottom: 1px solid rgb(139, 139, 139);
+      }
+
+      .input-errored {
+        border-bottom: 1px solid red;
+      }
+
+      .materialsInsideBox {
+        display: flex;
+        gap: 3px;
+        justify-content: center;
+        border-top: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+        padding: 5px 0 7px 0;
+        margin-bottom: 10px;
+
+        .mBoxQttyInput {
+          margin-left: 2px;
+          width: 40px;
+        }
+      }
+    }
+    .wsk-cp-img {
+      position: absolute;
+      margin-top: 10px;
+      filter: drop-shadow(0px 4px 4px rgba(49, 49, 49, 0.6));
+      top: 5px;
+      left: 50%;
+      transform: translate(-50%);
+      -webkit-transform: translate(-50%);
+      -ms-transform: translate(-50%);
+      -moz-transform: translate(-50%);
+      -o-transform: translate(-50%);
+      -khtml-transform: translate(-50%);
+      width: 45%;
+      padding: 15px;
+      text-align: center;
+      transition: all 0.2s ease-in-out;
+    }
+    .wsk-cp-img img {
+      width: 100%;
+      transition: all 0.2s ease-in-out;
+      border-radius: 6px;
+    }
+    .wsk-cp-product:hover .wsk-cp-img {
+      // top: -40px;
+      top: -10px;
+    }
+    .wsk-cp-product:hover .wsk-cp-img img {
+      // box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+      // box-shadow: inset 0 -1px 52px rgba(0, 0, 0, 0.2), 0 5px 34px rgba(0, 0, 0, 0.29);
+    }
+    .wsk-cp-text {
+      // padding-top: 150%;
+      padding-top: 55%;
+    }
+    .wsk-cp-text .category {
+      text-align: center;
+      font-size: 12px;
+      font-weight: bold;
+      padding: 5px;
+      margin-bottom: 45px;
+      position: relative;
+      transition: all 0.2s ease-in-out;
+    }
+    .wsk-cp-text .category > * {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      -webkit-transform: translate(-50%, -50%);
+      -moz-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      -o-transform: translate(-50%, -50%);
+      -khtml-transform: translate(-50%, -50%);
+    }
+    .wsk-cp-text .category > span {
+      padding: 12px 30px;
+      border: 1px solid #313131;
+      background: #212121;
+      color: #fff;
+      // box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+      box-shadow: 0 19px 38px rgba(0, 0, 0, 0), 0 15px 12px rgba(0, 0, 0, 0.12);
+      border-radius: 27px;
+      transition: all 0.05s ease-in-out;
+    }
+    .wsk-cp-product:hover .wsk-cp-text .category > span {
+      border-color: #ddd;
+      box-shadow: none;
+      padding: 11px 28px;
+    }
+    .wsk-cp-product:hover .wsk-cp-text .category {
+      margin-top: 0px;
+    }
+    .wsk-cp-text .title-product {
+      // text-align: center;
+      display: flex;
+      justify-content: space-between;
+
+      p {
+        margin: 0;
+      }
+    }
+    .wsk-cp-text .title-product h3 {
+      font-size: 20px;
+      font-weight: bold;
+      margin: 15px auto;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      width: 100%;
+    }
+    .wsk-cp-text .description p {
+      margin: 0;
+    }
+    /* Truncate */
+    .wsk-cp-text .description {
+      margin-bottom: 10px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .wsk-cp-text {
+      .warningtext {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 0;
+        font-size: 15px;
+
+        &.ko {
+          background-color: #f0d76d;
+          color: #1c1c1c;
+        }
+
+        &.ok {
+          background-color: #1ea59a;
+          color: #fff;
+        }
+      }
+    }
+
+    .card-footer {
+      background-color: #ffffff;
+    }
+    .card-footer:after,
+    .card-footer:before {
+      content: '';
+      display: table;
+    }
+    .card-footer:after {
+      clear: both;
+    }
+
+    .card-footer .price {
+      //   float: left;
+
+      display: flex;
+      justify-content: space-between;
+
+      p {
+        margin: 0;
+      }
+    }
+
+    .card-footer .wcf-right {
+      float: right;
+    }
+
+    .price {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    div.buy-btn {
+      display: block;
+      color: #212121;
+      text-align: center;
+      font-size: 14px;
+      width: 35px;
+      height: 35px;
+      line-height: 35px;
+      border-radius: 50%;
+      border: 1px solid #212121;
+      transition: all 0.2s ease-in-out;
+      &:hover,
+      &:active,
+      &:focus {
+        border-color: #2ba04e;
+        background: #2ba04e;
+        color: #fff;
+        text-decoration: none;
+      }
+    }
+    .wsk-btn {
+      display: inline-block;
+      color: #212121;
+      text-align: center;
+      font-size: 18px;
+      transition: all 0.2s ease-in-out;
+      border-color: #ff9800;
+      background: #ff9800;
+      padding: 12px 30px;
+      border-radius: 27px;
+      margin: 0 5px;
+      &:hover,
+      &:focus,
+      &:active {
+        text-decoration: none;
+        color: #fff;
+      }
+    }
+    .red {
+      color: #f44336;
+      font-size: 22px;
+      display: inline-block;
+      margin: 0 5px;
+    }
+  }
+}

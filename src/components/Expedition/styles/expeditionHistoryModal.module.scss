@@ -1,0 +1,116 @@
+.expeditionHistoryModal {
+  :global {
+    // max-width: max-content;
+    .expeditionHistoryMainRegion {
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+      row-gap: 10px;
+
+      .discountByLvlsInfoZone {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        border: 2px solid #7d4f31;
+        border-radius: 5px;
+
+        .inside.levelRow {
+          .cell {
+            &:nth-child(odd) {
+              background: #5c4134;
+            }
+            &:nth-child(even) {
+              background: $brown-muted;
+            }
+          }
+        }
+
+        /* a single row → no .verticalContainer wrapper needed */
+        .inside {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          align-items: center;
+          text-align: center;
+          // padding: 0 8px;
+
+          &.levelRow {
+            display: table-column;
+            // flex-direction: column;
+          }
+
+          &.levelRow {
+            .cell {
+              grid-template-columns: repeat(4, 1fr);
+              gap: 3px;
+              width: 100%;
+
+              .destinationNameContainer {
+                font-weight: bolder;
+
+                .destinationName {
+                  display: flex;
+                  justify-content: center;
+                }
+              }
+            }
+          }
+
+          span,
+          .cell {
+            display: grid;
+            align-items: center;
+            padding: 4px 6px;
+            font-size: 13px;
+            text-align: center;
+            color: #f5e3bc;
+            white-space: nowrap;
+            gap: 4px;
+          }
+
+          /* ---------- header */
+          &.header {
+            background-color: #a7744a;
+            font-weight: bold;
+            width: 100%;
+            border-radius: 5px 5px 0px 0px;
+
+            .headerCell {
+              display: flex;
+              flex-direction: row;
+              justify-content: center;
+
+              img {
+                margin-top: -3px;
+              }
+            }
+
+            .lvSpan {
+              background-color: #855a39;
+              height: 100%;
+            }
+
+            span {
+              font-size: 14px;
+              line-height: 1.2;
+              flex-direction: column;
+              color: white;
+              // border-right: 1px solid #a87c56;
+
+              &:last-child {
+                border-right: none;
+              }
+            }
+          }
+        }
+      }
+    }
+    .modal-content {
+      border: 2px solid white;
+      border-radius: 5px;
+
+      .modal-body {
+        background-color: $main-modal-bg-color;
+      }
+    }
+  }
+}

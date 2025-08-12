@@ -1,0 +1,12 @@
+// --------------------------------------------------------------------------------
+// Define funciones SASS para realizar cálculos y transformaciones de valores.
+// Útiles para generar unidades, manipular colores, etc.
+// --------------------------------------------------------------------------------
+
+@function scaleUIColony($value) {
+  @return $value * $scaleUIColony;
+}
+
+@function adjust-position($base-position, $adjustment: -6%) {
+  @return calc(#{$base-position} + #{$adjustment});
+}

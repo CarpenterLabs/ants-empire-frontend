@@ -1,0 +1,499 @@
+.npcUnav {
+  :global {
+    background-image: url('/images/finals/tavern/paper_BG_inactive.png') !important;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+}
+
+.npcCard {
+  :global {
+    // max-width: 85%;
+    background-image: url('/images/finals/tavern/paper_BG_active.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+    filter: drop-shadow(1px 1px 4px rgba(68, 61, 61, 0.9));
+
+    .npcCardWrapper {
+      //   cursor: pointer;
+
+      padding: 10px 10px;
+      // border-radius: 6px;
+      // box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+      position: relative;
+      margin: 0px 10px;
+
+      .countDowns {
+        display: flex;
+        justify-content: space-between;
+
+        background-image: url('/images/finals/tavern/next_skip_separator.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 100% 100%;
+        padding: 0px 13px;
+
+        // Responsive overrides
+        @media (max-width: 1400px) {
+        }
+
+        @media (max-width: 1200px) {
+        }
+
+        @media (max-width: 992px) {
+        }
+
+        @media (max-width: 768px) {
+          flex-direction: column;
+          padding: 5px 10px;
+          .nextQuest,
+          .nextSkip {
+            justify-content: space-between;
+          }
+        }
+
+        .nextQuest,
+        .nextSkip {
+          display: flex;
+          gap: 5px;
+          // background-color: whitesmoke;
+          border-radius: 5px;
+          padding: 2px;
+          color: white;
+        }
+      }
+
+      .unavailableMsg {
+        margin-top: 5px;
+        text-align: center;
+
+        p {
+          padding-top: 5px;
+          margin: 0;
+        }
+      }
+
+      &.unavailable {
+        -webkit-filter: grayscale(100%);
+        filter: grayscale(100%);
+        // background-color: rgba(138, 138, 138, 0.1) !important;
+        // border: 1px solid #868584 !important;
+        cursor: auto;
+      }
+
+      // .materialsInsideBox {
+      //   display: flex;
+      //   gap: 0.8rem;
+      //   justify-content: center;
+      //   border-top: 1px solid #ddd;
+      //   border-bottom: 1px solid #ddd;
+      //   padding: 5px 0 5px 0;
+      // }
+      .wsk-cp-img {
+        filter: drop-shadow(0px 4px 4px rgba(49, 49, 49, 0.6));
+
+        //   padding: 15px;
+        transition: all 0.2s ease-in-out;
+        text-align: center;
+        margin-top: -22px;
+        margin-bottom: -15px;
+
+        &.unav {
+          padding: 5rem 0px;
+
+          img {
+            width: 100%;
+          }
+        }
+      }
+      .wsk-cp-img img {
+        width: 75%;
+        transition: all 0.2s ease-in-out;
+        border-radius: 6px;
+      }
+
+      // Responsive overrides
+      @media (max-width: 1400px) {
+      }
+
+      @media (max-width: 1200px) {
+      }
+
+      @media (max-width: 992px) {
+      }
+
+      @media (max-width: 768px) {
+        .wsk-cp-img {
+          width: 60%;
+          margin: 0px auto;
+          img {
+            width: 60;
+          }
+
+          &.unav {
+            margin-top: 25%;
+            width: 100%;
+
+            img {
+              width: 100%;
+            }
+          }
+        }
+      }
+
+      .npcMainInfo {
+        .npc-desc {
+          padding-top: 2.5%;
+          text-align: center;
+          font-size: 16px;
+
+          p {
+            margin: 0;
+            line-height: 1.1;
+          }
+        }
+
+        .npc-name {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-transform: uppercase;
+          font-weight: bolder;
+          line-height: 1.1;
+          margin-top: 2%;
+          @media (max-width: 768px) {
+            margin-top: 1%;
+          }
+
+          .nameOne {
+            color: white;
+            margin: 0;
+            font-size: 20px;
+
+            &.unav {
+              text-transform: capitalize;
+              font-weight: 400;
+              color: black;
+              font-size: 1rem;
+              // padding-top: 7px;
+
+              @media (max-width: 768px) {
+                margin-top: 10px;
+              }
+            }
+          }
+
+          .surname {
+            color: $primary-orange;
+
+            &.unav {
+              text-transform: capitalize;
+              font-size: 1.2rem;
+              // font-weight: 400;
+              // color: black;
+            }
+          }
+        }
+      }
+
+      .npcInfo-area {
+        margin-top: 5px;
+
+        .activeQuestsArea {
+          .questLine {
+            // margin: 5px 0px 5px 0px;
+            // border: 1px solid whitesmoke;
+            // border-radius: 5px;
+            // box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+            // margin-bottom: 5px;
+
+            &.successed {
+              //   -webkit-filter: grayscale(100%);
+              filter: grayscale(50%);
+              //background-color: rgb(175 175 175 / 40%) !important;
+            }
+
+            .typeAndDate {
+              display: flex;
+              justify-content: space-between;
+              // margin: 5px;
+              font-size: 15px;
+
+              background-image: url('/images/finals/tavern/material_swap_header_bg.png');
+              background-repeat: no-repeat;
+              background-position: center;
+              background-size: 100% 100%;
+              padding: 1px;
+
+              .type {
+                // background-color: whitesmoke;
+                padding: 0px 2px 0px 15px;
+                color: white;
+                text-transform: capitalize;
+                font-weight: 500;
+              }
+            }
+
+            .costAndReward {
+              display: flex;
+              background-image: url('/images/finals/tavern/paper_strip_BG.png');
+              background-repeat: no-repeat;
+              background-position: center;
+              background-size: 100% 100%;
+              height: 90px;
+              filter: drop-shadow(1px 1px 4px rgba(68, 61, 61, 0.9));
+
+              &.disabled {
+                filter: grayscale(100%);
+                cursor: not-allowed;
+
+                .deliveryBtn {
+                  cursor: not-allowed !important;
+                }
+                .skipBtn {
+                  cursor: pointer !important;
+                }
+              }
+
+              .usedtimeImg {
+                width: 20px;
+              }
+
+              .materials {
+                gap: 0.2rem;
+                justify-content: center;
+                display: flex;
+
+                .img {
+                  display: flex;
+                  align-items: center;
+                  gap: 2px;
+                  flex-direction: column;
+                  border: 2px solid #b68e61;
+                  padding: 5px;
+                  font-weight: 400;
+                  min-width: 45px;
+                  max-height: 62px;
+                  border-radius: 5px;
+
+                  img {
+                    width: 25px;
+                  }
+                }
+
+                // border-top: 1px solid #ddd;
+                // border-bottom: 1px solid #ddd;
+                // padding: 5px 0 5px 0;
+              }
+
+              .mintPack {
+                display: flex;
+                align-items: center;
+                gap: 3px;
+              }
+
+              .questCost {
+                // border-right: 1px solid #b9b9b9;
+                width: 22%;
+                padding: 10px 5px 5px 5px;
+                .costs {
+                  // width: 25%;
+                  display: inline-flex;
+                  align-items: center;
+                  justify-content: flex-start;
+                  padding: 5px 5px 5px 25px;
+
+                  // Responsive overrides
+                  @media (max-width: 1400px) {
+                  }
+
+                  @media (max-width: 1200px) {
+                  }
+
+                  @media (max-width: 992px) {
+                    padding: 5px 15px 5px 30px;
+                  }
+
+                  .img {
+                    display: flex;
+                    align-items: center;
+                    gap: 2px;
+                    flex-direction: column;
+                    border: 2px solid #b68e61;
+                    padding: 5px;
+                    font-weight: 400;
+                    min-width: 45px;
+                    max-height: 62px;
+                    border-radius: 5px;
+
+                    img {
+                      width: 25px;
+                    }
+                  }
+                }
+
+                .playerPassCostIcon {
+                  position: absolute;
+                }
+              }
+
+              .imgSeparatorSwap {
+                display: flex;
+                align-items: center;
+                padding-left: 20px;
+
+                @media (max-width: 1200px) {
+                  padding-left: 20px;
+                }
+
+                @media (max-width: 992px) {
+                  padding-left: 20px;
+                }
+
+                @media (max-width: 768px) {
+                  padding-left: 20px;
+                }
+
+                img {
+                  width: 20px;
+
+                  @media (max-width: 768px) {
+                    width: 20px;
+                  }
+                }
+              }
+
+              .questReward {
+                // border: 1px solid green;
+
+                width: 35%;
+                padding: 15px 5px 5px 5px;
+                display: flex;
+                align-items: flex-end;
+
+                .rewards {
+                  display: inline-flex;
+                  align-items: center;
+                  justify-content: flex-start;
+                  padding: 5px 5px 7px 5px;
+
+                  .img {
+                    display: flex;
+                    align-items: center;
+                    gap: 2px;
+                    flex-direction: column;
+                    border: 2px solid #b68e61;
+                    padding: 5px;
+                    font-weight: 400;
+                    min-width: 45px;
+                    max-height: 62px;
+                    border-radius: 5px;
+                    .pwrTicket {
+                      margin-block-start: auto;
+                      margin-left: -2px;
+                      width: 100%;
+                      text-align: center;
+                      display: flex;
+                      align-items: center;
+                    }
+                  }
+                }
+              }
+
+              .success {
+                display: flex;
+                align-items: center;
+                width: 28%;
+                margin-right: 25px;
+                justify-content: flex-end;
+
+                span {
+                  background: #5ab55a;
+                  color: white;
+                  padding: 4px;
+                  border-radius: 4px;
+                }
+              }
+
+              .executeAndSkipBtns {
+                display: flex;
+                margin-left: auto;
+                flex-direction: column;
+                justify-content: center;
+                margin-right: 7%;
+
+                .executeQuestBtn {
+                  .deliveryBtn {
+                    padding: 0.5rem 1rem;
+                    border: none;
+                    border-radius: 6px;
+                    background-color: transparent !important;
+                    cursor: pointer;
+                    color: #fff;
+                    background-image: url('/images/finals/tavern/delivery_btn_bg.png');
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    background-size: contain;
+                    // width: 120px;
+                    font-size: 15px;
+                    line-height: 1;
+                    min-width: 100px;
+                    font-weight: 500;
+                    text-transform: uppercase;
+
+                    @media (max-width: 768px) {
+                      font-size: 14px;
+                      min-width: auto;
+                      padding: 5px 10px;
+                    }
+                  }
+                }
+                .skipQuestBtn {
+                  .skipBtn {
+                    padding: 0.5rem 1rem;
+                    border: none;
+                    border-radius: 6px;
+                    background-color: transparent !important;
+                    cursor: pointer;
+                    color: #fff;
+                    background-image: url('/images/finals/tavern/skip_btn_bg.png');
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    background-size: contain;
+                    // width: 120px;
+                    font-size: 15px;
+                    line-height: 1;
+                    min-width: 100px;
+
+                    @media (max-width: 768px) {
+                      font-size: 14px;
+                      min-width: 100%;
+                      padding: 5px 10px;
+                    }
+                  }
+
+                  button {
+                    font-size: 15px;
+                    padding: 5px;
+                  }
+
+                  .skipBtn {
+                    display: flex;
+                    font-weight: 500;
+                    align-items: center;
+                    justify-content: center;
+                    i {
+                      padding-left: 5px;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

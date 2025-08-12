@@ -1,0 +1,26 @@
+stages:
+  - deploy
+
+deploy:
+  stage: deploy
+  only:
+    - master
+  script:
+    # Save the private key to a file
+    - echo "$SSH_PRIVATE_KEY" > /tmp/deploy_key
+    - chmod 600 /tmp/deploy_key
+    - chmod 700 /tmp/deploy_key
+
+    # Add the EC2 instance's public key to the known_hosts file
+    - mkdir -p ~/.ssh
+    - ssh-keyscan 0.0.0.0 >> ~/.ssh/known_hosts
+    - chmod 600 ~/.ssh/known_hosts
+    - chmod 700 ~/.ssh
+
+    # Connect to the EC2 instance using SSH key for authentication and execute a command remotely
+    # CONTENT REMOVED FOR PRIVACY AND SHOWCASE PURPOSES
+
+    # You can add more commands here to perform additional tasks on the EC2 instance
+
+    # Clean up the temporary private key
+    - rm /tmp/deploy_key

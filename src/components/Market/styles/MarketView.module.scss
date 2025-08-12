@@ -1,0 +1,568 @@
+.marketView {
+  :global {
+    .nav.nav-tabs {
+      border-bottom: 2px solid #ffd77461;
+      box-shadow: 0 4px 4px -4px rgba(255, 215, 116, 0.38);
+
+      .nav-item {
+        cursor: pointer;
+        font-weight: bolder;
+        text-transform: uppercase;
+
+        &.mrkt {
+          background-image: url('/images/finals/tavern/delivery_btn_bg.png');
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: 100% 100%;
+          background-color: transparent !important;
+          padding: 0px 15px;
+
+          &.active {
+            filter: drop-shadow(1px 1px 3px rgba(238, 214, 214, 0.9));
+            transition: filter 0.2s ease-in-out !important;
+          }
+        }
+
+        &.myNfts {
+          background-image: url('/images/finals/tavern/skip_btn_bg.png');
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: 100% 100%;
+          padding: 0px 14px;
+          margin-left: 2px;
+
+          &.active {
+            filter: drop-shadow(1px 1px 3px rgba(238, 214, 214, 0.9));
+            transition: filter 0.5s ease !important;
+          }
+        }
+
+        .nav-link {
+          color: rgb(77, 75, 75);
+          color: black;
+          font-weight: bolder;
+          border: none;
+
+          &.active {
+            // color: rgb(77, 75, 75);
+            color: white;
+            background-color: transparent;
+            font-weight: bolder;
+            border: none;
+            filter: drop-shadow(0px 4px 4px rgba(49, 49, 49, 0.8));
+
+            // transition: all 0.2s ease-in-out;
+          }
+        }
+      }
+    }
+    .mainPageContainer {
+      padding: 1rem 0rem;
+
+      display: grid;
+      grid-template-columns: 21% 1fr; // 20% left for filters, rest for content
+      grid-template-areas:
+        'filters nfts'
+        'filters pagination';
+      gap: 1rem; // spacing between columns
+
+      .nftsList {
+        grid-area: nfts;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, 170px);
+        justify-content: center;
+        margin: 10px auto 20px auto;
+        gap: 20px 10px;
+        width: 100%;
+        justify-items: center;
+      }
+      .marketFilters {
+        grid-area: filters;
+        width: 100%;
+        display: flex;
+        flex-direction: column; // stack filters vertically in sidebar
+        // gap: 1rem;
+        transition: all 0.5s ease-in-out;
+        background-image: url('/images/finals/expedition/Reward/reward_paper1.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 100% 100%;
+        align-items: flex-start; // align to left inside sidebar
+        padding: 10px 15px;
+        filter: drop-shadow(2px 4px 8px rgba(49, 49, 49, 0.8));
+        max-height: fit-content;
+
+        .filtTitle {
+          font-weight: bolder;
+          color: white;
+          font-family: 'Slackey';
+          font-size: 24px;
+          padding: 10px 10px 5px 10px;
+        }
+
+        .upgradedZone {
+          display: flex;
+          padding: 5px 10px;
+          width: 100%;
+          background-image: url('/images/finals/tavern/material_swap_header_bg.png');
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: 100% 100%;
+          // justify-content: center;
+          margin-top: 10px;
+
+          span {
+            margin-right: 8px;
+            color: white;
+            font-weight: bolder;
+          }
+
+          .custSwitch {
+            &::after {
+              background: url('/images/finals/icons/slider.png') no-repeat center;
+              background-size: contain;
+            }
+          }
+        }
+
+        .rc-slider {
+          .rc-slider-track {
+            background-color: $primary-orange;
+          }
+          .rc-slider-handle {
+            background: url('/images/finals/icons/slider.png') no-repeat center;
+            background-size: contain;
+            background-color: transparent;
+            border: none;
+            width: 16px;
+            height: 16px;
+            margin-top: -6px;
+          }
+        }
+
+        // TYPE FILTERS ZONE
+
+        .typeAndRarity {
+          display: flex;
+          flex-direction: column;
+
+          .firstZ {
+            .typeLabel {
+              margin-top: 20px;
+            }
+
+            .typeFiltersZone {
+              display: flex;
+              margin-top: 5px;
+              flex-wrap: wrap;
+              row-gap: 5px;
+              margin-bottom: 5px;
+
+              .typeFiltBtn {
+                margin-right: 8px;
+                background-image: url('/images/finals/marketBtn.png');
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: 100% 100%;
+                background-color: transparent;
+                color: #fff;
+                font-weight: bolder;
+                border: none;
+                padding: 0px 15px;
+                cursor: pointer;
+                height: 35px;
+                // border-radius: 5px;
+                font-size: 14px;
+                display: flex;
+                align-items: center;
+                transition: filter 0.1s ease-in-out;
+
+                span {
+                  padding-top: 2px;
+                }
+
+                img {
+                  width: 27px;
+                  margin-right: 5px;
+                  margin-left: -5px;
+                  filter: drop-shadow(1px 1px 3px rgba(68, 61, 61, 0.9));
+                }
+              }
+            }
+          }
+          .typeLabel,
+          .rarityLabel {
+            width: 100%;
+            background-image: url('/images/finals/tavern/material_swap_header_bg.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 100% 100%;
+            color: white;
+            font-weight: bolder;
+            padding: 2px 10px;
+          }
+
+          .secondZ {
+            .rarityLabel {
+              margin-top: 0.5rem;
+            }
+
+            .rarityFiltersZone {
+              display: flex;
+              margin-top: 5px;
+              flex-wrap: wrap;
+              row-gap: 8px;
+              margin-bottom: 5px;
+
+              .rarityFiltBtn {
+                margin-right: 8px;
+                background-color: transparent;
+                color: #fff;
+                font-weight: 600;
+                border: none;
+                padding: 5px 10px 5px 5px;
+                cursor: pointer;
+                height: 40px;
+                // border-radius: 5px;
+                font-size: 14px;
+                display: flex;
+                align-items: center;
+                transition: filter 0.2s ease-in-out;
+
+                img {
+                  width: 30px;
+                  // margin-right: -5px;
+                  margin-top: -2px;
+                  filter: drop-shadow(1px 1px 3px rgba(68, 61, 61, 0.9));
+                }
+
+                &.common {
+                  background-image: url('/images/finals/Welcome_Pack/common_bg.png');
+                  background-repeat: no-repeat;
+                  background-position: center;
+                  background-size: 100% 100%;
+                }
+
+                &.rare {
+                  background-image: url('/images/finals/Welcome_Pack/rare_bg.png');
+                  background-repeat: no-repeat;
+                  background-position: center;
+                  background-size: 100% 100%;
+                }
+
+                &.epic {
+                  background-image: url('/images/finals/Welcome_Pack/epic_bg.png');
+                  background-repeat: no-repeat;
+                  background-position: center;
+                  background-size: 100% 100%;
+                }
+
+                &.legendary {
+                  background-image: url('/images/finals/Welcome_Pack/legendary_bg.png');
+                  background-repeat: no-repeat;
+                  background-position: center;
+                  background-size: 100% 100%;
+                }
+              }
+            }
+          }
+        }
+        .rangesAndSort {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          .rangesZone {
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            padding: 5px 20px;
+            gap: 1.5rem;
+
+            .hpRange,
+            .powerRange {
+              width: 100%;
+
+              span {
+                color: black;
+                font-weight: 600;
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+
+                span {
+                  color: white;
+                  margin-right: 5px;
+                }
+
+                img {
+                  width: 30px;
+                  filter: drop-shadow(1px 1px 3px rgba(68, 61, 61, 0.9));
+                }
+              }
+            }
+          }
+
+          .sortByZone {
+            width: 100%;
+            display: flex;
+            justify-content: space-evenly;
+            margin: 5px 0px;
+
+            label {
+              display: flex;
+              align-items: center;
+
+              span {
+                color: black;
+                font-weight: bolder;
+                width: 110px;
+              }
+
+              select {
+                padding: 3px;
+                border-radius: 0px;
+                background-color: transparent;
+                border: none;
+                border-bottom: 2px solid $primary-orange;
+                font-weight: bolder;
+                color: white;
+
+                option {
+                  background-color: $main-modal-bg-color;
+                  font-weight: bolder;
+                }
+              }
+            }
+
+            .custSwitch {
+              &::after {
+                background: url('/images/finals/icons/slider.png') no-repeat center;
+                background-size: contain;
+              }
+            }
+          }
+        }
+
+        .applyBtnZone {
+          display: flex;
+          align-items: center;
+          width: 100%;
+          justify-content: center;
+          margin: 10px 0px 5px 0px;
+
+          .applyFiltBtn {
+            width: 65%;
+            cursor: pointer;
+            letter-spacing: 1.5px;
+            background-image: url('/images/finals/expedition/result/roll_bg.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 100% 100%;
+            // width: 150px;
+            height: 50px;
+            font-family: 'Slackey';
+            font-weight: bolder;
+            text-transform: uppercase;
+            background-color: transparent;
+            border: none;
+            @include button-hover-without-text;
+          }
+        }
+      }
+
+      .pagination-container {
+        grid-area: pagination;
+        width: 100%;
+        display: flex;
+        gap: 5px;
+        justify-content: center;
+        align-items: center;
+
+        .firstAndLast {
+          border: none;
+          // border-radius: 6px;
+          background-color: transparent;
+          cursor: pointer;
+          color: #fff;
+          font-weight: bolder;
+          background-image: url('/images/finals/tavern/pinkBtn_small_bg.png');
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: 100% 100%;
+          padding: 5px 30px;
+          @include button-hover-without-text;
+        }
+
+        .prevAndNext {
+          border: none;
+          // border-radius: 6px;
+          background-color: transparent;
+          cursor: pointer;
+          color: #fff;
+          font-weight: bolder;
+          background-image: url('/images/finals/roomDetail/assign_btn_bg.png');
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: 100% 100%;
+          padding: 5px 20px;
+          @include button-hover-without-text;
+        }
+
+        .pageInfoZone {
+          height: min-content;
+          color: white;
+          font-weight: bolder;
+          padding: 3px;
+
+          // background-image: url('/images/finals/tavern/next_skip_separator.png');
+          // background-repeat: no-repeat;
+          // background-position: center;
+          // background-size: 100% 100%;
+
+          span {
+            color: $primary-orange;
+          }
+        }
+
+        button {
+          padding: 3px;
+        }
+
+        /* ✅ Mobile-specific tweaks */
+        @media (max-width: 480px) {
+          flex-direction: row;
+          gap: 8px;
+
+          .firstAndLast,
+          .prevAndNext {
+            width: 100%; // full width buttons for easy tapping
+            max-width: 80px; // limit so they don't stretch too wide
+            text-align: center;
+            padding: 8px 0;
+            font-size: 14px; // slightly smaller font
+          }
+
+          .pageInfoZone {
+            font-size: 12px;
+          }
+        }
+      }
+
+      @media (max-width: 1650px) {
+        grid-template-columns: 30% 1fr;
+
+        .marketFilters {
+          justify-content: flex-start;
+          height: max-content;
+        }
+      }
+
+      @media (max-width: 1440px) {
+        grid-template-columns: 28% 1fr;
+
+        .marketFilters {
+          justify-content: flex-start;
+          height: max-content;
+        }
+      }
+
+      @media (max-width: 1150px) {
+        grid-template-columns: 35% 1fr;
+
+        .marketFilters {
+          justify-content: flex-start;
+          height: max-content;
+        }
+      }
+
+      /* ✅ Tablet view (filters get 30%) */
+      @media (max-width: 1024px) and (min-width: 769px) {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+          'filters'
+          'nfts'
+          'pagination';
+
+        .marketFilters {
+          flex-direction: column; /* Or keep column if you want them stacked */
+          justify-content: center;
+
+          // background-image: url('/images/finals/market/longBgFilters.png');
+          // background-repeat: no-repeat;
+          // background-position: center;
+          // background-size: 100% 100%;
+
+          background-image: none;
+          background-color: #83553f;
+          border-radius: 5px;
+          filter: drop-shadow(0px 0px 6px rgba($primary-orange, 0.7));
+
+          .rangesAndSort {
+            flex-direction: row;
+          }
+
+          .filtTitle {
+            display: none;
+          }
+
+          .applyBtnZone {
+            button {
+              width: 35% !important;
+              // padding: 0;
+            }
+          }
+
+          .typeAndRarity {
+            flex-direction: row;
+            gap: 10px;
+
+            .typeLabel,
+            .rarityLabel {
+              margin-top: 0px !important;
+            }
+          }
+        }
+      }
+
+      /* ✅ Mobile responsive (filters on top, then NFTs, then pagination) */
+      @media (max-width: 768px) {
+        grid-template-columns: 100%;
+        grid-template-areas:
+          'filters'
+          'nfts'
+          'pagination';
+
+        /*NEW*/
+        // .nftsList {
+        //   grid-template-columns: repeat(auto-fit, 170px);
+        //   justify-content: center;
+        // }
+
+        .marketFilters {
+          flex-direction: column; /* Or keep column if you want them stacked */
+          justify-content: center;
+
+          // background-image: url('/images/finals/market/longBgFilters.png');
+          // background-repeat: no-repeat;
+          // background-position: center;
+          // background-size: 100% 100%;
+          background-image: none;
+          background-color: #83553f;
+          border-radius: 5px;
+          filter: drop-shadow(0px 0px 6px rgba($primary-orange, 0.7));
+          // max-width: min-content;
+
+          .filtTitle {
+            display: none;
+          }
+
+          .typeLabel,
+          .rarityLabel {
+            margin-top: 0px !important;
+          }
+        }
+      }
+    }
+  }
+}

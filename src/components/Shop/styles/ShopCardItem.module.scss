@@ -1,0 +1,236 @@
+.shopCardItem {
+  :global {
+    .wsk-cp-product {
+      background-color: #282c2f;
+      padding: 3px;
+      border-radius: 6px;
+      position: relative;
+      // margin: 20px auto;
+      box-shadow: 11px 11px 5px -10px rgba(0, 0, 0, 0.75);
+      border: 2px solid white;
+      transition: all 0.25s ease-in-out;
+      cursor: pointer;
+
+      &:hover {
+        box-shadow: 0 10px 10px -10px rgb(0 0 0 / 50%);
+        transform: translateY(-4px);
+      }
+
+      .priceZone {
+        color: white;
+        padding-right: 8px;
+        font-weight: bolder;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+
+        span {
+          font-size: 20px;
+        }
+      }
+
+      .materialsInsideBox {
+        display: flex;
+        justify-content: center;
+        gap: 5px;
+        padding: 5px 0;
+
+        background-image: url('/images/finals/tavern/next_skip_separator.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 88% 100%;
+
+        .matInside {
+          color: white;
+          font-weight: bolder;
+          display: flex;
+          align-items: center;
+          img {
+            width: 30px;
+          }
+        }
+      }
+
+      &:hover {
+        .wsk-cp-img {
+          top: -10px;
+        }
+
+        .wsk-cp-text {
+          .category {
+            margin-top: 0;
+
+            > span {
+              border-color: #ddd;
+              box-shadow: none;
+              padding: 11px 28px;
+            }
+          }
+        }
+      }
+    }
+
+    .wsk-cp-img {
+      // width: 100%;
+      padding: 15px;
+      // transform: translate(-50%);
+      filter: drop-shadow(0px 4px 4px rgba(49, 49, 49, 0.6));
+      transition: all 0.2s ease-in-out;
+      text-align: center;
+
+      img {
+        width: 65%;
+        border-radius: 6px;
+        transition: all 0.2s ease-in-out;
+      }
+    }
+
+    .wsk-cp-text {
+      background-image: url('/images/finals/expedition/Reward/reward_paper2_active.png');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 100% 100%;
+      margin: 2px;
+
+      .category {
+        text-align: center;
+        font-size: 12px;
+        font-weight: bold;
+        padding: 5px;
+        margin-bottom: 45px;
+        position: relative;
+        transition: all 0.2s ease-in-out;
+
+        > * {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+
+        > span {
+          padding: 12px 30px;
+          border: 1px solid #313131;
+          background: #212121;
+          color: #fff;
+          border-radius: 27px;
+          box-shadow: 0 19px 38px rgba(0, 0, 0, 0), 0 15px 12px rgba(0, 0, 0, 0.12);
+          transition: all 0.05s ease-in-out;
+        }
+      }
+
+      .title-product {
+        text-align: center;
+        padding: 10px 0px;
+
+        span {
+          font-size: 20px;
+          color: white;
+          font-weight: bolder;
+          // margin: 15px auto;
+          width: 100%;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+
+      .description-prod {
+        text-align: center;
+        width: 100%;
+        font-weight: 500;
+        // margin-bottom: 10px;
+
+        p {
+          margin: 0;
+        }
+      }
+    }
+
+    .card-footer {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 5px 10px;
+      // border: 1px solid #ddd;
+
+      .buyBtn {
+        width: 100%;
+        cursor: pointer;
+        letter-spacing: 1.5px;
+        background-image: url('/images/finals/expedition/Reward/claim_btn_bg_active.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 100% 100%;
+        // width: 150px;
+        height: 50px;
+        font-family: 'Slackey';
+        font-weight: bolder;
+        @include button-hover-without-text;
+        background-color: transparent;
+        border: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+          width: 40px;
+        }
+      }
+    }
+
+    .price {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    div.buy-btn {
+      display: block;
+      width: 35px;
+      height: 35px;
+      line-height: 35px;
+      text-align: center;
+      font-size: 14px;
+      color: #212121;
+      border: 1px solid #212121;
+      border-radius: 50%;
+      transition: all 0.2s ease-in-out;
+
+      &:hover,
+      &:active,
+      &:focus {
+        border-color: #2ba04e;
+        background: #2ba04e;
+        color: #fff;
+        text-decoration: none;
+      }
+    }
+
+    .wsk-btn {
+      display: inline-block;
+      padding: 12px 30px;
+      margin: 0 5px;
+      text-align: center;
+      font-size: 18px;
+      color: #212121;
+      background: #ff9800;
+      border-color: #ff9800;
+      border-radius: 27px;
+      transition: all 0.2s ease-in-out;
+
+      &:hover,
+      &:focus,
+      &:active {
+        color: #fff;
+        text-decoration: none;
+      }
+    }
+
+    .red {
+      color: #f44336;
+      font-size: 22px;
+      display: inline-block;
+      margin: 0 5px;
+    }
+  }
+}

@@ -1,0 +1,190 @@
+html {
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  // ::-webkit-scrollbar-track {
+  //   background-color: rgba(0, 0, 0, 0.1) !important;
+  //   border-radius: 10px !important;
+  // }
+  // ::-webkit-scrollbar-thumb {
+  //   background-color: #6dc5be !important;
+  //   border-radius: 10px !important;
+  // }
+
+  ::-webkit-scrollbar-track {
+    background: url('/images/finals/blacksmith/slider_bg_good.png') center center no-repeat;
+    background-size: 100% 100%;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #fff176, #f4a261, #e76f51);
+    border-radius: 10px;
+    box-shadow: inset 0 0 2px rgba(255, 255, 255, 0.5);
+    min-height: 40px;
+  }
+
+  &.modal-open {
+    padding-right: 0 !important;
+  }
+}
+
+// @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700|Oswald:400,300,700);
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css);
+
+body {
+   background: url('/images/finals/blacksmith/mainBodyBg.png') top center no-repeat;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-attachment: fixed;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: #6dc5be !important;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #6dc5be !important;
+}
+
+.mainAppRow {
+  margin-right: 15px;
+  margin-left: 15px;
+  margin-top: 25px;
+
+  .mainGameHeaderTxt {
+    padding: 0px;
+    margin-top: 5px;
+    margin-bottom: 3px;
+  }
+  // background-color: aqua;
+
+  .mainGameContainer {
+    // border: 1px solid blue;
+    // background-color: #dbf5fe;
+
+    &.insideColonyDetail {
+      margin: 0;
+
+      .col-12 {
+        padding: 0;
+      }
+    }
+  }
+
+  &.insideColonyDetail {
+    margin: 0;
+
+    .col-12 {
+      padding: 0;
+    }
+  }
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: black !important;
+}
+
+.fadeIn {
+  animation: fadeIn 1.5s;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes hue-rotate {
+  from {
+    filter: hue-rotate(0deg);
+  }
+  to {
+    filter: hue-rotate(360deg);
+  }
+}
+
+@keyframes shake {
+  0% {
+    transform: translate(3px, 0);
+  }
+  50% {
+    transform: translate(-3px, 0);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes torchFlicker {
+  0%,
+  100% {
+    opacity: 0.6;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 0.9;
+    transform: translate(-50%, -50%) scale(1.5);
+  }
+}
+
+/* ─── CHISPA DE ANTORCHA ───────────────────────────────────────── */
+@keyframes flameJitter {
+  /* micro‑parpadeos muy rápidos */
+  from {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  to {
+    transform: translate(-50%, -50%) scale(1.05);
+  }
+}
+
+@keyframes flamePulse {
+  /* respiración lenta */
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 0.95;
+  }
+}
+
+/* ───── KEYFRAMES ─────────────────────────────────────────────── */
+
+/* llama principal: sube‑baja, se estira y oscila unos grados  */
+@keyframes bonfireFlicker {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(1) rotate(-1deg);
+    opacity: 0.75;
+  }
+  40% {
+    transform: translate(-50%, -52%) scale(1.12, 1.25) rotate(2deg);
+    opacity: 0.95;
+  }
+  60% {
+    transform: translate(-50%, -48%) scale(1.05, 1.1) rotate(-3deg);
+    opacity: 0.85;
+  }
+}
+
+/* chispa que sube y se apaga                                    */
+@keyframes bonfireSpark {
+  from {
+    transform: translate(-50%, -50%) translateY(0) scale(0.4);
+    opacity: 0.9;
+  }
+  to {
+    transform: translate(-50%, -50%) translateY(-80px) scale(0.8);
+    opacity: 0;
+  }
+}

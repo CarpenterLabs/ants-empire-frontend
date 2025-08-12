@@ -1,0 +1,176 @@
+:global {
+  .content-colony {
+    /* Transiciones suaves para el modo auto */
+    transition: filter 1.5s ease-in-out;
+
+    /* IMPORTANTE: Asegurar que el ::before siempre existe */
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      opacity: 0;
+      mix-blend-mode: multiply;
+      pointer-events: none;
+      z-index: 1;
+      /* Overlay más lento para cambios dramáticos */
+      transition: opacity 2.5s ease-out, background 2.5s ease-out !important;
+    }
+
+    .map {
+      position: relative;
+      z-index: 2;
+
+      .room {
+        z-index: 3;
+        /* Transición para rooms - CON important para forzar la lenta */
+        transition: filter 3.5s ease-in-out !important;
+
+        /* SIN HOVERS EN CSS - Se manejan por JavaScript */
+      }
+    }
+
+    .torch-glow,
+    .bonfire-flame {
+      z-index: 2;
+      /* Luces lentas para suavizar cambios intensos */
+      transition: filter 2s ease-in-out !important;
+    }
+
+    // //****** NIGHT MODE *******//
+    &.night {
+      &::before {
+        background: rgba(10, 25, 70, 0.5);
+        opacity: 1;
+      }
+
+      .map {
+        .room {
+          filter: brightness(0.85) saturate(1);
+          /* SIN hover CSS */
+        }
+      }
+    }
+
+    // ── MEDIODÍA ───────────────────────────────────
+    &.midday {
+      filter: saturate(1.2) brightness(1);
+
+      .map {
+        .room {
+          /* En lugar de none, usar valores explícitos para poder animar */
+          filter: brightness(1) saturate(1);
+          /* SIN hover CSS */
+        }
+      }
+
+      /* IMPORTANTE: Especificar para antorchas y hogueras en midday */
+      .torch-glow,
+      .bonfire-flame {
+        filter: blur(8px) brightness(3.2) !important;
+      }
+    }
+
+    // ── MODO MORNING (explícito para transiciones) ───────
+    &.morning {
+      /* Valores por defecto para morning */
+      filter: none;
+
+      /* Transiciones más lentas cuando se ENTRA a morning desde night */
+      &::before {
+        background: transparent;
+        opacity: 0;
+        /* Overlay desaparece más lento */
+        transition: opacity 3.5s ease-out, background 3.5s ease-out;
+      }
+
+      .map .room {
+        /* Valores explícitos para poder animar desde/hacia otros modos */
+        filter: brightness(1) saturate(1);
+        /* Transición muy lenta para morning - CON important para forzar */
+        transition: filter 4s ease-out !important;
+      }
+    }
+
+    // // Custom new ones autos
+
+    /* =====================================================================================
+   DAY-LIGHT CYCLE  ▸  requires AutoModeToggle to provide:
+     --lightModeProgress  (0→1 in each interval)
+     --lightIntensity     (0→1→0, peaks at midpoint)
+   Classes <html class="morning|midday|night"> are set by AutoModeToggle every 5 s
+   ===================================================================================== */
+
+    // /* Shared fallback transitions */
+    // &.morning,
+    // &.midday,
+    // &.night {
+    //   transition: filter 0.4s ease-in-out, background 0.4s ease-in-out;
+
+    //   .room {
+    //     transition: filter 0.25s ease-out !important;
+
+    //     /* Hover específico para morning */
+    //     &:hover {
+    //       filter: brightness(1) saturate(1) drop-shadow(0 0 5px #dce0e2) drop-shadow(0 0 0 #dce0e2) !important;
+    //       /* Transición rápida para hover */
+    //       transition: filter 0.25s ease !important;
+    //     }
+
+    //     /* Transición rápida cuando sale del hover */
+    //     &:not(:hover) {
+    //       transition: filter 0.25s ease;
+    //     }
+    //   }
+    // }
+
+    // /* -------------------------------- MORNING (05-12) ---------------------------------- */
+    // &.morning {
+    //   /* dawn: dim → bright */
+    //   .room {
+    //     /* 05:00 → 0.85  •  08:30 → 1.00  •  11:59 → 1.20 */
+    //     filter: brightness(calc(0.8 + var(--lightModeProgress) * 0.2)) /* 0.95 → 1.00 (cap) */
+    //       saturate(clamp(0.95, calc(0.95 + var(--lightModeProgress) * 0.1), 1));
+    //   }
+
+    //   &::before {
+    //     /* subtle cool mist fading out */
+    //     background: rgba(60, 90, 155, calc(0.3 - var(--lightModeProgress) * 0.3));
+    //     pointer-events: none;
+    //   }
+    // }
+
+    // /* -------------------------------- MIDDAY (12-20) ----------------------------------- */
+    // &.midday {
+    //   // filter: saturate(1.2) brightness(1);
+    //   /* use symmetric bell curve so max light peaks at 16:00 (mid-interval) */
+    //   .room {
+    //     filter: brightness(1) saturate(1)
+    //   }
+
+    //   .torch-glow,
+    //   .bonfire-flame {
+    //     /* flames dim at high noon, pop at dusk */
+    //     filter: blur(8px) brightness(3.2) !important;
+    //   }
+    // }
+
+    // /* --------------------------------- NIGHT (20-05) ------------------------------------ */
+    // &.night {
+    //   .room {
+    //     filter: brightness(0.85) saturate(1);
+    //   }
+
+    //   &::before {
+    //     /* deep-blue overlay that peaks at midnight */
+    //     background: rgba(10, 25, 70, calc(0.5 * var(--nightFadeOut))); // full 0.5 until last hour, then fade to 0
+
+    //     opacity: 1;
+    //     pointer-events: none;
+    //   }
+    // }
+  }
+}

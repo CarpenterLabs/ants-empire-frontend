@@ -1,0 +1,124 @@
+$c-panel-packs-margin-top: 15px;
+$c-panel-packs-gap: 15px;
+
+.cPanelPacksView {
+    margin-top: $c-panel-packs-margin-top;
+
+    :global {
+        .families-selectors {
+            width: 100%;
+            display: flex;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            gap: $c-panel-packs-gap;
+            align-items: center;
+
+            .new-family-btn,
+            .save-family-btn {
+                &.disabled {
+                    background-color: grey !important;
+                    border-color: grey !important;
+                    pointer-events: none;
+                    opacity: 0.65;
+                }
+            }
+
+            select,
+            input {
+                width: 100%;
+                max-width: 150px;
+            }
+
+            input {
+                max-width: 200px;
+            }
+
+            .close-family-input {
+                height: 35px;
+                background-color: rgba(220, 53, 69, 0.7490196078);
+                cursor: pointer;
+            }
+        }
+
+        .btns-discount {
+            display: flex;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            gap: $c-panel-packs-gap;
+            margin-bottom: 25px;
+            align-items: center;
+        }
+
+        .table-discounts {
+            width: 100%;
+            max-width: 30%;
+            text-align: center;
+
+            input {
+                width: 65px;
+            }
+
+            th {
+                background-color: #a0a9ad2e;
+                width: 70px;
+                text-align: left;
+
+                &:first-child {
+                    width: 150px;
+                }
+            }
+
+            td {
+                width: 70px;
+                cursor: pointer;
+                text-align: left;
+
+                &.nohover {
+                    pointer-events: none;
+                }
+
+                &:first-child {
+                    background-color: #a0a9ad2e;
+                    cursor: auto;
+                }
+
+                &:hover {
+                    background-color: #b5e4f5;
+                    transition: 0.3s;
+                }
+            }
+        }
+
+        .pack-selectors {
+            display: flex;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            gap: $c-panel-packs-gap;
+            margin-bottom: 25px;
+            align-items: center;
+
+            .button-undo {
+                width: 37px;
+                height: 37px;
+                background-color: #7bc3cf;
+                padding: 6px;
+                border-radius: 15%;
+                cursor: pointer;
+
+                &.disabled {
+                    background-color: grey !important;
+                    border-color: grey !important;
+                    pointer-events: none;
+                    opacity: 0.65;
+                }
+            }
+        }
+
+        .gridPacks {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, 350px);
+            justify-content: center;
+            gap: 24px;
+        }
+    }
+}

@@ -1,0 +1,88 @@
+.faucetView {
+  :global {
+    display: flex;
+    justify-content: center;
+    .general-faucet-container {
+      padding: 10px;
+      display: inline-flex;
+      flex-direction: column;
+
+      font-weight: bolder;
+
+      background-image: url('/images/finals/expedition/paper_bg.png');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 100% 100%;
+      min-width: 411px;
+      min-height: 440px;
+      align-items: center;
+      filter: drop-shadow(0px 7px 4px rgba(49, 49, 49, 0.8));
+      transition: all 0.2s ease-in-out;
+
+      .subContainer {
+        width: 85%;
+        text-align: center;
+        margin-top: 3rem;
+
+        .title {
+          color: white;
+          background-image: url('/images/finals/tavern/paper_strip_BG.png');
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: contain;
+          padding: 18px;
+          filter: drop-shadow(0px 4px 4px rgba(49, 49, 49, 0.8));
+          transition: all 0.2s ease-in-out;
+          font-size: 24px;
+          text-transform: uppercase;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-family: 'Slackey';
+          .nec {
+            margin-right: 5px;
+            color: #bf6c22;
+          }
+        }
+
+        .claimBtn {
+          width: 90%;
+          cursor: pointer;
+          letter-spacing: 1.5px;
+          background-image: url('/images/finals/use_power/upgrade_btn_bg.png');
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: 100% 100%;
+          height: 50px;
+          font-family: 'Slackey';
+          font-weight: bolder;
+          text-transform: uppercase;
+          background-color: transparent;
+          border: none;
+          @include button-hover-without-text;
+        }
+
+        .balance {
+          // background-color: red;
+          padding: 5px 10px;
+          background-image: url('/images/finals/tavern/next_skip_separator.png');
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: 100% 100%;
+          color: $primary-orange;
+          margin-top: 5px;
+          .txt {
+            color: white;
+          }
+        }
+
+        &.claim {
+          display: flex;
+          justify-content: center;
+          margin-top: auto;
+          margin-bottom: 2.5rem;
+        }
+      }
+    }
+  }
+}

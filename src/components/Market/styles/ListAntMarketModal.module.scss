@@ -1,0 +1,29 @@
+.listAntMarketModal {
+  :global {
+    .mainbody {
+      display: inline-flex;
+      justify-content: center;
+      gap: 11px;
+      padding-bottom: 1rem;
+      flex-direction: column;
+
+      .list-ants {
+        margin: auto;
+      }
+
+      .feeText {
+        text-align: center;
+      }
+
+      .priceArea {
+        margin: auto;
+      }
+    }
+    .button-box {
+      margin: 10px 0;
+      width: 100%;
+      display: inline-flex;
+      justify-content: space-evenly;
+    }
+  }
+}
